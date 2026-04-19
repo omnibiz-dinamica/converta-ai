@@ -1,4 +1,6 @@
-const WA = "https://wa.me/5500000000000?text=Quero%20falar%20com%20um%20especialista%20agora!";
+import { wa } from "@/lib/contact";
+
+const URL = wa("Quero falar com um especialista agora!");
 
 export function FinalCTA() {
   return (
@@ -12,7 +14,7 @@ export function FinalCTA() {
           <span className="font-semibold text-foreground">máquina de vendas</span>.
         </p>
         <a
-          href={WA}
+          href={URL}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-10 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-primary px-9 py-5 text-lg font-bold text-primary-foreground shadow-glow-primary transition-bounce hover:scale-[1.05] animate-pulse-glow"

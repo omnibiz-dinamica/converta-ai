@@ -1,12 +1,10 @@
-const WA =
-  "https://wa.me/5500000000000?text=Quero%20meu%20diagnóstico%20gratuito%20de%20atendimento.";
+import { wa } from "@/lib/contact";
 
 export function DiagnosticSection() {
   return (
     <section id="diagnostico" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-[2rem] border border-primary/30 bg-gradient-cta p-10 shadow-glow-primary sm:p-16">
-          {/* Decorative pattern */}
           <div
             aria-hidden
             className="absolute inset-0 -z-10 opacity-20"
@@ -37,7 +35,7 @@ export function DiagnosticSection() {
               clientes — e como resolver.
             </p>
             <a
-              href={WA}
+              href={wa("Quero meu diagnóstico gratuito de atendimento.")}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-background px-8 py-4 text-base font-bold text-foreground shadow-elegant transition-bounce hover:scale-[1.04]"

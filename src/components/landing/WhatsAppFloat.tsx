@@ -1,10 +1,11 @@
-const WHATSAPP_URL =
-  "https://wa.me/5500000000000?text=Olá!%20Quero%20automatizar%20meu%20atendimento%20com%20IA.";
+import { wa } from "@/lib/contact";
+
+const URL = wa("Olá! Quero automatizar meu atendimento com IA.");
 
 export function WhatsAppFloat() {
   return (
     <a
-      href={WHATSAPP_URL}
+      href={URL}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar no WhatsApp"
