@@ -1,4 +1,4 @@
-const WA = "https://wa.me/5500000000000?text=Quero%20parar%20de%20perder%20clientes";
+import { wa } from "@/lib/contact";
 
 const bullets = [
   { icon: "⚡", text: "Respostas instantâneas 24/7" },
@@ -30,7 +30,7 @@ export function SolutionSection() {
             </p>
 
             <a
-              href={WA}
+              href={wa("Quero parar de perder clientes")}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-glow-primary transition-bounce hover:scale-[1.03]"
@@ -40,11 +40,10 @@ export function SolutionSection() {
           </div>
 
           <ul className="space-y-3">
-            {bullets.map((b, i) => (
+            {bullets.map((b) => (
               <li
                 key={b.text}
                 className="group flex items-start gap-4 rounded-2xl border border-border bg-gradient-card p-5 transition-smooth hover:border-primary/50 hover:shadow-glow-primary"
-                style={{ animationDelay: `${i * 80}ms` }}
               >
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-primary text-xl shadow-glow-primary">
                   {b.icon}
@@ -52,19 +51,6 @@ export function SolutionSection() {
                 <div className="flex-1">
                   <p className="text-base font-semibold text-foreground sm:text-lg">{b.text}</p>
                 </div>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="mt-2 h-5 w-5 text-primary opacity-0 transition-smooth group-hover:opacity-100"
-                >
-                  <path
-                    d="M5 12h14M13 6l6 6-6 6"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
               </li>
             ))}
           </ul>

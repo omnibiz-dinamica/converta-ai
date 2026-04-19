@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
 
 const links = [
-  { label: "Solução", href: "#solucao" },
+  { label: "Sobre", href: "#sobre" },
   { label: "Serviços", href: "#servicos" },
-  { label: "Resultados", href: "#resultados" },
-  { label: "Diagnóstico", href: "#diagnostico" },
+  { label: "Agentes IA", href: "#agentes-ia" },
+  { label: "Portfólio", href: "#portfolio" },
+  { label: "Processo", href: "#processo" },
+  { label: "Contacto", href: "#contato" },
 ];
 
 export function Navbar() {
@@ -32,7 +34,7 @@ export function Navbar() {
           <Logo />
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {links.map((l) => (
             <a
               key={l.href}
@@ -44,12 +46,12 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <a
-            href="#cta-final"
+            href="#contato"
             className="inline-flex items-center justify-center rounded-full bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow-primary transition-bounce hover:scale-[1.03]"
           >
-            Falar agora
+            Solicitar Orçamento
           </a>
         </div>
 
@@ -57,7 +59,7 @@ export function Navbar() {
           type="button"
           aria-label="Abrir menu"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground lg:hidden"
         >
           <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
             {open ? (
@@ -80,7 +82,7 @@ export function Navbar() {
       </div>
 
       {open && (
-        <div className="border-t border-border bg-background/95 backdrop-blur-xl md:hidden">
+        <div className="border-t border-border bg-background/95 backdrop-blur-xl lg:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6">
             {links.map((l) => (
               <a
@@ -93,11 +95,11 @@ export function Navbar() {
               </a>
             ))}
             <a
-              href="#cta-final"
+              href="#contato"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center justify-center rounded-full bg-gradient-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-glow-primary"
             >
-              Falar agora
+              Solicitar Orçamento
             </a>
           </nav>
         </div>

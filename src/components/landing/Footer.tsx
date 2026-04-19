@@ -1,3 +1,4 @@
+import { EMAIL, LINKEDIN, PHONE_DISPLAY, SITE, wa } from "@/lib/contact";
 import { Logo } from "./Logo";
 
 export function Footer() {
@@ -8,8 +9,8 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Logo />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              Automatizamos atendimento com IA para empresas que querem vender mais — sem perder
-              tempo nem clientes.
+              Tecnologia inteligente sob medida. Desenvolvimento, automação e agentes de IA para
+              empresas que querem crescer com eficiência.
             </p>
           </div>
 
@@ -19,10 +20,12 @@ export function Footer() {
             </h4>
             <ul className="mt-4 space-y-2.5 text-sm">
               {[
-                ["Solução", "#solucao"],
+                ["Sobre", "#sobre"],
                 ["Serviços", "#servicos"],
-                ["Resultados", "#resultados"],
-                ["Diagnóstico", "#diagnostico"],
+                ["Agentes IA", "#agentes-ia"],
+                ["Portfólio", "#portfolio"],
+                ["Processo", "#processo"],
+                ["Contacto", "#contato"],
               ].map(([label, href]) => (
                 <li key={href}>
                   <a
@@ -43,23 +46,33 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
               <li>
                 <a
-                  href="https://wa.me/5500000000000"
+                  href={wa("Olá! Vim pelo site")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 transition-smooth hover:text-primary"
                 >
-                  💬 WhatsApp
+                  💬 WhatsApp {PHONE_DISPLAY}
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:contato@dinamicasolucao.com"
-                  className="transition-smooth hover:text-primary"
+                  href={`mailto:${EMAIL}`}
+                  className="transition-smooth hover:text-primary break-all"
                 >
-                  ✉️ contato@dinamicasolucao.com
+                  ✉️ {EMAIL}
                 </a>
               </li>
-              <li>🌐 dinamicasolucao.com</li>
+              <li>
+                <a
+                  href={LINKEDIN}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-smooth hover:text-primary"
+                >
+                  💼 LinkedIn
+                </a>
+              </li>
+              <li>🌐 {SITE}</li>
             </ul>
           </div>
         </div>
