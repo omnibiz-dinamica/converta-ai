@@ -36,7 +36,7 @@ export const Route = createRootRoute({
           "Automatize seu atendimento com IA. Responda em segundos no WhatsApp, Instagram e site. Aumente vendas 24/7.",
       },
       { name: "author", content: "Dinâmica Solução" },
-      { property: "og:title", content: "Dinâmica Solução — Tecnologia Inteligente" },
+      { property: "og:title", content: "Dinâmica Solução — Automação de Atendimento com IA" },
       {
         property: "og:description",
         content:
@@ -44,6 +44,12 @@ export const Route = createRootRoute({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Dinâmica Solução — Automação de Atendimento com IA" },
+      { name: "description", content: "Creates high-converting AI-powered customer service automation landing pages." },
+      { property: "og:description", content: "Creates high-converting AI-powered customer service automation landing pages." },
+      { name: "twitter:description", content: "Creates high-converting AI-powered customer service automation landing pages." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6d4f1ef8-030a-49f5-8634-c73f49c83592/id-preview-ce0564b9--e054aded-8a2e-400c-a5db-d595e7476a82.lovable.app-1776619410843.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6d4f1ef8-030a-49f5-8634-c73f49c83592/id-preview-ce0564b9--e054aded-8a2e-400c-a5db-d595e7476a82.lovable.app-1776619410843.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
