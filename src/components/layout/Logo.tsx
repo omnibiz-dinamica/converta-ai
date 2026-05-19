@@ -16,7 +16,7 @@ export function Logo({ className = "" }: { className?: string }) {
       </div>
       <div className="flex flex-col leading-none">
         <span className="font-display text-base font-bold tracking-tight text-foreground">
-          Dinâmica<span className="text-primary">.</span>
+          Dinâmica Solução<span className="text-primary">.</span>
         </span>
         <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
           Tecnologia Inteligente
