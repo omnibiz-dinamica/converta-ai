@@ -1,4 +1,9 @@
-name: Deploy para Hostnet via FTP
+name: Build e Deploy para Hostnet via FTP
+
+# IMPORTANTE: para este workflow rodar, mova este arquivo para:
+#   .github/workflows/deploy.yml
+# Depois configure os secrets FTP_SERVER, FTP_USERNAME e FTP_PASSWORD
+# em Settings → Secrets and variables → Actions no GitHub.
 
 on:
   push:
@@ -8,20 +13,28 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Baixar o código do repositório
         uses: actions/checkout@v4
 
-      - name: Enviar arquivos para a Hostnet via FTP
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Gerar build estático (pasta dist/)
+        run: npm run build
+
+      - name: Enviar dist/ para a Hostnet via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
           server-dir: /www/
-          exclude: |
-          **/.git*
-          **/.git*/**
-          .github/**
-          README.md
