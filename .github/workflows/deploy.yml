@@ -30,6 +30,9 @@ jobs:
       - name: Gerar build estático (pasta dist/)
         run: npm run build
 
+      - name: Listar arquivos gerados
+        run: ls -R
+
       - name: Enviar dist/ para a Hostnet via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
