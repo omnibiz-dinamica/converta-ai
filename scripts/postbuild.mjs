@@ -1,97 +1,38 @@
 #!/usr/bin/env node
 /**
- * Postbuild: normaliza o resultado do build para uma pasta `dist/` limpa,
- * pronta para envio via FTP a hospedagem compartilhada (Hostnet, Apache).
- *
- * O build estático usa o prerender oficial do TanStack Start com Nitro desligado.
- * A saída pública gerada em dist/client/ é consolidada em dist/ para FTP.
- *
- * Também garante um .htaccess de fallback SPA e remove artefatos de servidor.
+ * Postbuild do export SPA puro para FTP/Hostnet.
+ * Não executa Nitro, SSR ou prerender: apenas garante arquivos públicos
+ * obrigatórios e valida a saída final em dist/.
  */
-import {
-  existsSync,
-  rmSync,
-  renameSync,
-  readdirSync,
-  statSync,
-  writeFileSync,
-  mkdirSync,
-} from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readdirSync, statSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 const cwd = process.cwd();
 const distDir = resolve(cwd, "dist");
-const clientSubdir = join(distDir, "client");
-const nitroPublic = resolve(cwd, ".output/public");
-const outputDir = resolve(cwd, ".output");
-const wranglerDir = resolve(cwd, ".wrangler");
 
-function moveChildrenInto(srcDir, destDir) {
-  if (!existsSync(destDir)) mkdirSync(destDir, { recursive: true });
-  for (const entry of readdirSync(srcDir)) {
-    const from = join(srcDir, entry);
-    const to = join(destDir, entry);
-    if (existsSync(to)) rmSync(to, { recursive: true, force: true });
-    renameSync(from, to);
+if (!existsSync(distDir)) {
+  console.error("[postbuild] ERRO: dist/ não foi gerado pelo build SPA do Vite.");
+  process.exit(1);
+}
+
+const publicFiles = [".htaccess", "favicon.ico", "robots.txt"];
+
+for (const file of publicFiles) {
+  const source = resolve(cwd, "public", file);
+  const target = join(distDir, file);
+
+  if (existsSync(source) && !existsSync(target)) {
+    mkdirSync(distDir, { recursive: true });
+    copyFileSync(source, target);
   }
-  rmSync(srcDir, { recursive: true, force: true });
 }
 
-// 1) Consolidar layout em dist/
-if (!existsSync(distDir) && existsSync(nitroPublic)) {
-  mkdirSync(distDir, { recursive: true });
-  moveChildrenInto(nitroPublic, distDir);
-  if (existsSync(outputDir)) rmSync(outputDir, { recursive: true, force: true });
-}
-
-if (existsSync(clientSubdir)) {
-  moveChildrenInto(clientSubdir, distDir);
-}
-
-// 2) Remover artefatos de servidor / cloudflare que não fazem sentido em FTP
-for (const junk of [
-  "server",
-  "client",
-  ".server-tmp",
-  "nitro.json",
-  "wrangler.json",
-  "package.json",
-  "package-lock.json",
-  ".wrangler",
-  "_headers",
-  "_routes.json",
-]) {
-  const p = join(distDir, junk);
-  if (existsSync(p)) rmSync(p, { recursive: true, force: true });
-}
-
-if (existsSync(outputDir)) rmSync(outputDir, { recursive: true, force: true });
-if (existsSync(wranglerDir)) rmSync(wranglerDir, { recursive: true, force: true });
-
-// 3) Garantir .htaccess (caso o public/.htaccess não tenha sido copiado)
-const htaccessPath = join(distDir, ".htaccess");
-if (!existsSync(htaccessPath)) {
-  writeFileSync(
-    htaccessPath,
-    `<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
-</IfModule>
-`,
-    "utf8",
-  );
-}
-
-// 4) Sanity checks claros para CI/FTP
 const indexHtml = join(distDir, "index.html");
 if (!existsSync(indexHtml)) {
   console.error(
     "[postbuild] ERRO: dist/index.html não foi gerado.\n" +
-      "  O prerender estático da rota `/` falhou ou a saída pública não foi consolidada.\n" +
-      "  Execute `npm run build:static` e confira o log de prerender acima.",
+      "  O build estático deve usar vite.static.config.ts e gerar uma SPA em dist/.\n" +
+      "  Execute `npm run build:static` e verifique se o Vite copiou o index.html raiz.",
   );
   process.exit(1);
 }
@@ -105,7 +46,6 @@ if (!existsSync(assetsDir) || !statSync(assetsDir).isDirectory()) {
   process.exit(1);
 }
 
-// 5) Relatório
 const listing = readdirSync(distDir)
   .sort()
   .map((name) => {
@@ -113,5 +53,8 @@ const listing = readdirSync(distDir)
     const kind = statSync(full).isDirectory() ? "dir " : "file";
     return `  ${kind}  ${name}`;
   });
-console.log("[postbuild] Bundle estático pronto em dist/:");
+
+console.log("Static build concluído");
+console.log("dist/index.html encontrado");
+console.log("[postbuild] Conteúdo final de dist/:");
 console.log(listing.join("\n"));

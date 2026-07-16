@@ -22,11 +22,11 @@ dist/
 
 ## Como o build estático funciona
 
-O comando `npm run build:static` usa o **prerender oficial do TanStack Start**
-para gerar `dist/index.html` renderizado em build time. O Nitro fica desligado
-nesse comando, então a saída final para FTP não inclui servidor Node, Wrangler,
-Cloudflare Worker nem bundle SSR. O `.htaccess` faz qualquer URL interna voltar
-para esse `index.html` em hospedagem Apache/Hostnet.
+O comando `npm run build:static` usa uma configuração Vite SPA dedicada
+(`vite.static.config.ts`). Esse build não usa TanStack Start, Nitro, SSR,
+Wrangler, Cloudflare Worker nem prerender. A saída final é uma aplicação SPA
+100% estática em `dist/`. O `.htaccess` faz qualquer URL interna voltar para
+`index.html` em hospedagem Apache/Hostnet.
 
 ## Opção A — Build no seu computador
 
