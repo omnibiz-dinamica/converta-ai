@@ -1,36 +1,37 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 // ------------------------------------------------------------------------
-// Build estático (SPA) para hospedagem compartilhada (Hostnet, Apache, Nginx)
+// Build estático (SPA) para hospedagem compartilhada (Hostnet, Apache).
 // ------------------------------------------------------------------------
-// - `tanstackStart.spa.enabled: true` pré-renderiza um shell HTML.
-// - `spa.prerender.outputPath: "/index"` grava o shell como `index.html`.
-// - `nitro.preset: "static"` faz o Nitro emitir apenas arquivos estáticos.
-// - `nitro.output.publicDir: "dist"` consolida tudo em `dist/`.
+// O build estático (SPA + preset "static" do Nitro) só é acionado quando
+// a variável de ambiente STATIC_BUILD=1 estiver definida. Isso evita que
+// o build do sandbox de preview (que roda como Cloudflare Worker e força
+// o preset "cloudflare-module") tente pré-renderizar e falhe.
 //
-// OBS.: dentro do sandbox de preview do Lovable, o wrapper força o preset
-// `cloudflare-module` (o preview roda como Worker). O build estático para
-// FTP DEVE ser executado no seu computador ou no GitHub Actions rodando
-// `npm run build` — nesse ambiente as opções abaixo são aplicadas e a pasta
-// `dist/` é gerada com `index.html`, `_build/` (JS + CSS), `assets/` e
-// `.htaccess` prontos para envio à Hostnet.
+// Para gerar `dist/` estático rode:
+//   STATIC_BUILD=1 npm run build
+// ou use o script `npm run build:static` (equivalente).
 // ------------------------------------------------------------------------
-export default defineConfig({
-  tanstackStart: {
-    spa: {
-      enabled: true,
-      maskPath: "/",
-      prerender: {
-        outputPath: "/index",
-      },
-    },
-  },
-  nitro: {
-    preset: "static",
-    output: {
-      dir: "dist",
-      publicDir: "dist",
-      serverDir: "dist/.server-tmp",
-    },
-  },
-});
+const STATIC_BUILD = process.env.STATIC_BUILD === "1";
+
+export default defineConfig(
+  STATIC_BUILD
+    ? {
+        tanstackStart: {
+          spa: {
+            enabled: true,
+            maskPath: "/",
+            prerender: { outputPath: "/index" },
+          },
+        },
+        nitro: {
+          preset: "static",
+          output: {
+            dir: "dist",
+            publicDir: "dist",
+            serverDir: "dist/.server-tmp",
+          },
+        },
+      }
+    : {},
+);
