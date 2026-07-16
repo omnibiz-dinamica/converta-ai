@@ -3,7 +3,8 @@
  * Postbuild: normaliza o resultado do build para uma pasta `dist/` limpa,
  * pronta para envio via FTP a hospedagem compartilhada (Hostnet, Apache).
  *
- * O build estático atual usa Vite SPA puro. Nitro/SSR ficam fora do processo.
+ * O build estático usa o prerender oficial do TanStack Start com Nitro desligado.
+ * A saída pública gerada em dist/client/ é consolidada em dist/ para FTP.
  *
  * Também garante um .htaccess de fallback SPA e remove artefatos de servidor.
  */
@@ -84,12 +85,22 @@ if (!existsSync(htaccessPath)) {
   );
 }
 
-// 4) Sanity check
+// 4) Sanity checks claros para CI/FTP
 const indexHtml = join(distDir, "index.html");
 if (!existsSync(indexHtml)) {
   console.error(
     "[postbuild] ERRO: dist/index.html não foi gerado.\n" +
-      "  Execute `npm run build:static`, que usa Vite SPA puro sem Nitro/SSR.",
+      "  O prerender estático da rota `/` falhou ou a saída pública não foi consolidada.\n" +
+      "  Execute `npm run build:static` e confira o log de prerender acima.",
+  );
+  process.exit(1);
+}
+
+const assetsDir = join(distDir, "assets");
+if (!existsSync(assetsDir) || !statSync(assetsDir).isDirectory()) {
+  console.error(
+    "[postbuild] ERRO: dist/assets/ não foi gerado.\n" +
+      "  O client build não produziu os assets esperados para hospedagem estática.",
   );
   process.exit(1);
 }

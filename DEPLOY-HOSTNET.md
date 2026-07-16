@@ -22,10 +22,11 @@ dist/
 
 ## Como o build estático funciona
 
-O comando `npm run build:static` usa **Vite SPA puro**, sem SSR, sem
-prerender do Nitro e sem geração de `.output/server`. O `index.html` carrega o
-React no navegador, e o `.htaccess` faz qualquer URL retornar para esse mesmo
-`index.html` em hospedagem Apache/Hostnet.
+O comando `npm run build:static` usa o **prerender oficial do TanStack Start**
+para gerar `dist/index.html` renderizado em build time. O Nitro fica desligado
+nesse comando, então a saída final para FTP não inclui servidor Node, Wrangler,
+Cloudflare Worker nem bundle SSR. O `.htaccess` faz qualquer URL interna voltar
+para esse `index.html` em hospedagem Apache/Hostnet.
 
 ## Opção A — Build no seu computador
 
@@ -92,8 +93,8 @@ o build estático não depende de Nitro nem de servidor SSR.
 ## Sem Node.js no servidor
 
 - Nenhum arquivo em `dist/` requer runtime.
-- Todo o roteamento acontece no cliente (TanStack Router).
-- O build não gera `.output/server`, Wrangler, Cloudflare Worker nem bundle SSR.
+- Todo o roteamento após o carregamento inicial acontece no cliente (TanStack Router).
+- O build estático não gera `.output/server`, Wrangler, Cloudflare Worker nem bundle SSR.
 - `ChatWidget` e `ContactForm` funcionam 100% no navegador (o formulário
   abre o WhatsApp com a mensagem preenchida).
 
