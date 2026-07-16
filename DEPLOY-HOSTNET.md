@@ -1,67 +1,115 @@
-# Deploy na Hostnet (FTP) — Passo a passo
+# Deploy estático na Hostnet (FTP)
 
-Este projeto foi configurado para gerar um site **100% estático** que pode ser enviado por FTP para qualquer hospedagem compartilhada (Hostnet, Locaweb, etc).
+Este projeto foi configurado para gerar um site **100% estático** (HTML + CSS + JS)
+que roda em qualquer hospedagem compartilhada com Apache/Nginx — **sem Node.js,
+sem SSR, sem Cloudflare Workers no servidor**.
 
-## O que o build gera
+## Resultado do build
 
-Ao rodar `npm run build`, o Vite + TanStack Start + Nitro gera uma pasta `dist/` com:
+Ao rodar `npm run build` **no seu computador ou no GitHub Actions**, o script
+gera a pasta `dist/` com:
 
 ```
 dist/
-├── index.html          ← página inicial pré-renderizada
-├── _build/             ← JS, CSS e assets com hash
-│   └── assets/
+├── index.html          ← página inicial pré-renderizada (obrigatória)
+├── .htaccess           ← fallback SPA para Apache/Hostnet
+├── assets/             ← imagens, fontes, logos
+├── _build/             ← bundles JS/CSS com hash (cache longo)
 └── favicon.ico
 ```
 
-É o conteúdo dessa pasta `dist/` que você envia para `/www/` da Hostnet.
+É o conteúdo dessa pasta `dist/` que você envia por FTP para `/www/` na Hostnet.
 
-## Opção A — Build manual no seu computador
+## Por que o build não roda dentro do preview do Lovable
 
-Requer Node.js 20+ instalado (https://nodejs.org).
+O sandbox de preview do Lovable força o preset `cloudflare-module` (o preview
+é executado como Cloudflare Worker). Isso é ótimo para desenvolvimento, mas
+impede a geração do bundle estático dentro do sandbox.
 
-1. Baixe o código do GitHub (Code → Download ZIP, ou `git clone`).
-2. Abra a pasta no terminal (VS Code, PowerShell, Terminal).
-3. Instale as dependências (apenas na primeira vez):
-   ```bash
-   npm install
-   ```
-4. Gere os arquivos estáticos:
-   ```bash
-   npm run build
-   ```
-5. Abra a pasta `dist/` que foi criada.
-6. Use um cliente FTP (FileZilla, WinSCP, Cyberduck) para conectar na Hostnet e **enviar todo o conteúdo de `dist/` para `/www/`**.
-7. Acesse seu domínio — o site já está no ar.
+O build estático é gerado **fora do sandbox** — no seu computador ou no
+GitHub Actions. Nesses ambientes as opções `nitro.preset: "static"` +
+`tanstackStart.spa.enabled: true` do `vite.config.ts` são aplicadas
+normalmente e a pasta `dist/` é criada.
 
-## Opção B — Deploy automático via GitHub Actions
+## Opção A — Build no seu computador
 
-O arquivo `deploy.yml` já existe na raiz do projeto. Ele precisa ser movido para `.github/workflows/deploy.yml` no repositório e atualizado para rodar o build antes do upload.
+Requer Node.js 20+ (https://nodejs.org).
 
-Configure os secrets no GitHub (Settings → Secrets and variables → Actions):
-- `FTP_SERVER` — ex: `ftp.seudominio.com.br`
-- `FTP_USERNAME` — usuário FTP da Hostnet
-- `FTP_PASSWORD` — senha FTP da Hostnet
+```bash
+git clone <seu-repo>
+cd converta-ai
+npm install
+npm run build
+```
 
-Cada `git push` na branch `main` vai:
+Ao final aparecerá:
+
+```
+[postbuild] Bundle estático pronto em dist/:
+  dir   _build
+  dir   assets
+  file  .htaccess
+  file  favicon.ico
+  file  index.html
+```
+
+Abra um cliente FTP (FileZilla, WinSCP, Cyberduck), conecte na Hostnet e
+**envie todo o conteúdo de `dist/` para `/www/`**. Não envie a pasta `dist`
+em si — envie **os arquivos que estão dentro dela**, para que o `index.html`
+fique diretamente em `/www/index.html`.
+
+Acesse seu domínio — o site está no ar.
+
+## Opção B — Deploy automático (GitHub Actions)
+
+O workflow em `.github/workflows/deploy.yml` já está configurado para:
+
 1. Instalar dependências (`npm install`)
-2. Rodar o build (`npm run build`)
-3. Enviar apenas `dist/` para `/www/` via FTP
+2. Rodar `npm run build` (gera `dist/`)
+3. Enviar `./dist/` → `/www/` via FTP
 
-## Onde estão os arquivos importantes (código-fonte)
+Configure os secrets no GitHub (**Settings → Secrets and variables → Actions**):
 
-| Onde | O quê |
-|------|-------|
-| `src/routes/index.tsx` | Página inicial (o que vira `dist/index.html`) |
-| `src/routes/__root.tsx` | Shell HTML + `<head>` com metatags SEO |
-| `src/components/sections/` | Cada seção da landing page (Hero, About, Services, etc.) |
-| `src/components/layout/` | Navbar, Footer, WhatsApp float, background tech |
-| `src/lib/contact.ts` | Número de WhatsApp, e-mail, LinkedIn |
-| `src/styles.css` | Tema visual, cores, animações |
-| `src/assets/` | Imagens (logo, etc.) |
+| Secret         | Valor                                    |
+| -------------- | ---------------------------------------- |
+| `FTP_SERVER`   | Ex.: `ftp.dinamicasolucao.com.br`        |
+| `FTP_USERNAME` | Usuário FTP fornecido pela Hostnet       |
+| `FTP_PASSWORD` | Senha FTP fornecida pela Hostnet         |
 
-## Observações
+Cada `git push` na branch `main` publica automaticamente na Hostnet.
 
-- **ChatWidget e ContactForm** funcionam 100% no cliente (o formulário abre o WhatsApp com a mensagem preenchida, o chat usa respostas locais). Não há backend, então nenhum ajuste é necessário para hospedagem estática.
-- **Não edite `src/routeTree.gen.ts`** — é gerado automaticamente.
-- **`.htaccess`**: se no futuro adicionar mais rotas (ex.: `/sobre`, `/contato`), coloque um `.htaccess` em `public/` com regra de fallback para SPA. Hoje, com apenas `/`, não é necessário.
+## Diretório correto para o deploy
+
+Sempre use **`dist/`**. O antigo caminho `.output/public/` foi descontinuado
+neste projeto — o postbuild consolida tudo em `dist/` mesmo que o Nitro tenha
+escrito em outra pasta intermediária.
+
+## Arquivos obrigatórios para hospedagem compartilhada
+
+| Arquivo/Pasta   | Obrigatório? | Papel                                       |
+| --------------- | ------------ | ------------------------------------------- |
+| `index.html`    | **Sim**      | Página inicial servida em `/`               |
+| `_build/`       | **Sim**      | JS/CSS carregados pelo `index.html`         |
+| `assets/`       | Sim          | Imagens/logos usados no `index.html`        |
+| `.htaccess`     | Recomendado  | Fallback SPA + cache dos assets no Apache   |
+| `favicon.ico`   | Opcional     | Ícone da aba do navegador                   |
+| `robots.txt`    | Opcional     | Instruções para crawlers                    |
+
+## Sem Node.js no servidor
+
+- Nenhum arquivo em `dist/` requer runtime.
+- Todo o roteamento acontece no cliente (TanStack Router).
+- `ChatWidget` e `ContactForm` funcionam 100% no navegador (o formulário
+  abre o WhatsApp com a mensagem preenchida).
+
+## Se aparecer 403 Forbidden
+
+- Confirme que **`index.html` está diretamente em `/www/`**, não em
+  `/www/dist/index.html`.
+- Confirme que o `.htaccess` também foi enviado (arquivos iniciados por `.`
+  às vezes ficam ocultos no cliente FTP — habilite "mostrar arquivos ocultos").
+
+## Se aparecer 404 ao atualizar página interna
+
+- Verifique se o `.htaccess` está presente em `/www/`.
+- Confirme que o módulo `mod_rewrite` está ativo (Hostnet ativa por padrão).
