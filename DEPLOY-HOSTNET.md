@@ -6,30 +6,26 @@ sem SSR, sem Cloudflare Workers no servidor**.
 
 ## Resultado do build
 
-Ao rodar `npm run build` **no seu computador ou no GitHub Actions**, o script
+Ao rodar `npm run build:static` **no seu computador ou no GitHub Actions**, o script
 gera a pasta `dist/` com:
 
 ```
 dist/
-├── index.html          ← página inicial pré-renderizada (obrigatória)
+├── index.html          ← página inicial do SPA estático (obrigatória)
 ├── .htaccess           ← fallback SPA para Apache/Hostnet
 ├── assets/             ← imagens, fontes, logos
-├── _build/             ← bundles JS/CSS com hash (cache longo)
-└── favicon.ico
+├── favicon.ico
+└── robots.txt
 ```
 
 É o conteúdo dessa pasta `dist/` que você envia por FTP para `/www/` na Hostnet.
 
-## Por que o build não roda dentro do preview do Lovable
+## Como o build estático funciona
 
-O sandbox de preview do Lovable força o preset `cloudflare-module` (o preview
-é executado como Cloudflare Worker). Isso é ótimo para desenvolvimento, mas
-impede a geração do bundle estático dentro do sandbox.
-
-O build estático é gerado **fora do sandbox** — no seu computador ou no
-GitHub Actions. Nesses ambientes as opções `nitro.preset: "static"` +
-`tanstackStart.spa.enabled: true` do `vite.config.ts` são aplicadas
-normalmente e a pasta `dist/` é criada.
+O comando `npm run build:static` usa **Vite SPA puro**, sem SSR, sem
+prerender do Nitro e sem geração de `.output/server`. O `index.html` carrega o
+React no navegador, e o `.htaccess` faz qualquer URL retornar para esse mesmo
+`index.html` em hospedagem Apache/Hostnet.
 
 ## Opção A — Build no seu computador
 
@@ -39,18 +35,18 @@ Requer Node.js 20+ (https://nodejs.org).
 git clone <seu-repo>
 cd converta-ai
 npm install
-npm run build
+npm run build:static
 ```
 
 Ao final aparecerá:
 
 ```
 [postbuild] Bundle estático pronto em dist/:
-  dir   _build
   dir   assets
   file  .htaccess
   file  favicon.ico
   file  index.html
+  file  robots.txt
 ```
 
 Abra um cliente FTP (FileZilla, WinSCP, Cyberduck), conecte na Hostnet e
@@ -65,7 +61,7 @@ Acesse seu domínio — o site está no ar.
 O workflow em `.github/workflows/deploy.yml` já está configurado para:
 
 1. Instalar dependências (`npm install`)
-2. Rodar `npm run build` (gera `dist/`)
+2. Rodar `npm run build:static` (gera `dist/`)
 3. Enviar `./dist/` → `/www/` via FTP
 
 Configure os secrets no GitHub (**Settings → Secrets and variables → Actions**):
@@ -80,16 +76,15 @@ Cada `git push` na branch `main` publica automaticamente na Hostnet.
 
 ## Diretório correto para o deploy
 
-Sempre use **`dist/`**. O antigo caminho `.output/public/` foi descontinuado
-neste projeto — o postbuild consolida tudo em `dist/` mesmo que o Nitro tenha
-escrito em outra pasta intermediária.
+Sempre use **`dist/`**. O caminho `.output/public/` não é usado no build FTP;
+o build estático não depende de Nitro nem de servidor SSR.
 
 ## Arquivos obrigatórios para hospedagem compartilhada
 
 | Arquivo/Pasta   | Obrigatório? | Papel                                       |
 | --------------- | ------------ | ------------------------------------------- |
 | `index.html`    | **Sim**      | Página inicial servida em `/`               |
-| `_build/`       | **Sim**      | JS/CSS carregados pelo `index.html`         |
+| `assets/`       | **Sim**      | JS/CSS/imagens carregados pelo `index.html` |
 | `assets/`       | Sim          | Imagens/logos usados no `index.html`        |
 | `.htaccess`     | Recomendado  | Fallback SPA + cache dos assets no Apache   |
 | `favicon.ico`   | Opcional     | Ícone da aba do navegador                   |
@@ -99,6 +94,7 @@ escrito em outra pasta intermediária.
 
 - Nenhum arquivo em `dist/` requer runtime.
 - Todo o roteamento acontece no cliente (TanStack Router).
+- O build não gera `.output/server`, Wrangler, Cloudflare Worker nem bundle SSR.
 - `ChatWidget` e `ContactForm` funcionam 100% no navegador (o formulário
   abre o WhatsApp com a mensagem preenchida).
 

@@ -1,37 +1,44 @@
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { defineConfig as defineLovableConfig } from "@lovable.dev/vite-tanstack-config";
+import tailwindcss from "@tailwindcss/vite";
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
+import react from "@vitejs/plugin-react";
+import { fileURLToPath, URL } from "node:url";
+import { defineConfig as defineViteConfig } from "vite";
+import tsconfigPaths from "vite-tsconfig-paths";
 
-// ------------------------------------------------------------------------
-// Build estático (SPA) para hospedagem compartilhada (Hostnet, Apache).
-// ------------------------------------------------------------------------
-// O build estático (SPA + preset "static" do Nitro) só é acionado quando
-// a variável de ambiente STATIC_BUILD=1 estiver definida. Isso evita que
-// o build do sandbox de preview (que roda como Cloudflare Worker e força
-// o preset "cloudflare-module") tente pré-renderizar e falhe.
-//
-// Para gerar `dist/` estático rode:
-//   STATIC_BUILD=1 npm run build
-// ou use o script `npm run build:static` (equivalente).
-// ------------------------------------------------------------------------
 const STATIC_BUILD = process.env.STATIC_BUILD === "1";
 
-export default defineConfig(
-  STATIC_BUILD
-    ? {
-        tanstackStart: {
-          spa: {
-            enabled: true,
-            maskPath: "/",
-            prerender: { outputPath: "/index" },
-          },
-        },
-        nitro: {
-          preset: "static",
-          output: {
-            dir: "dist",
-            publicDir: "dist",
-            serverDir: "dist/.server-tmp",
-          },
-        },
-      }
-    : {},
-);
+const projectRoot = fileURLToPath(new URL(".", import.meta.url));
+
+const staticBuildConfig = defineViteConfig({
+  root: fileURLToPath(new URL("./static", import.meta.url)),
+  publicDir: fileURLToPath(new URL("./public", import.meta.url)),
+  base: "/",
+  plugins: [
+    tanstackRouter({ target: "react" }),
+    react(),
+    tailwindcss(),
+    tsconfigPaths(),
+  ],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
+  build: {
+    outDir: fileURLToPath(new URL("./dist", import.meta.url)),
+    emptyOutDir: true,
+    assetsDir: "assets",
+    sourcemap: false,
+    rollupOptions: {
+      input: fileURLToPath(new URL("./static/index.html", import.meta.url)),
+    },
+  },
+  server: {
+    fs: {
+      allow: [projectRoot],
+    },
+  },
+});
+
+export default STATIC_BUILD ? staticBuildConfig : defineLovableConfig({});

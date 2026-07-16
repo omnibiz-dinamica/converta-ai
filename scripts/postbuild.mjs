@@ -3,11 +3,7 @@
  * Postbuild: normaliza o resultado do build para uma pasta `dist/` limpa,
  * pronta para envio via FTP a hospedagem compartilhada (Hostnet, Apache).
  *
- * Cobre 3 possíveis layouts de saída dependendo do ambiente:
- *   1) dist/           -> já contém index.html + assets (preset static local)
- *   2) dist/client/    -> saída típica quando o wrapper força cloudflare-module
- *                         (sandbox de preview). Move tudo para dist/.
- *   3) .output/public/ -> saída padrão do Nitro static sem override.
+ * O build estático atual usa Vite SPA puro. Nitro/SSR ficam fora do processo.
  *
  * Também garante um .htaccess de fallback SPA e remove artefatos de servidor.
  */
@@ -19,7 +15,6 @@ import {
   statSync,
   writeFileSync,
   mkdirSync,
-  cpSync,
 } from "node:fs";
 import { join, resolve } from "node:path";
 
@@ -27,6 +22,8 @@ const cwd = process.cwd();
 const distDir = resolve(cwd, "dist");
 const clientSubdir = join(distDir, "client");
 const nitroPublic = resolve(cwd, ".output/public");
+const outputDir = resolve(cwd, ".output");
+const wranglerDir = resolve(cwd, ".wrangler");
 
 function moveChildrenInto(srcDir, destDir) {
   if (!existsSync(destDir)) mkdirSync(destDir, { recursive: true });
@@ -43,7 +40,6 @@ function moveChildrenInto(srcDir, destDir) {
 if (!existsSync(distDir) && existsSync(nitroPublic)) {
   mkdirSync(distDir, { recursive: true });
   moveChildrenInto(nitroPublic, distDir);
-  const outputDir = resolve(cwd, ".output");
   if (existsSync(outputDir)) rmSync(outputDir, { recursive: true, force: true });
 }
 
@@ -54,6 +50,7 @@ if (existsSync(clientSubdir)) {
 // 2) Remover artefatos de servidor / cloudflare que não fazem sentido em FTP
 for (const junk of [
   "server",
+  "client",
   ".server-tmp",
   "nitro.json",
   "wrangler.json",
@@ -66,6 +63,9 @@ for (const junk of [
   const p = join(distDir, junk);
   if (existsSync(p)) rmSync(p, { recursive: true, force: true });
 }
+
+if (existsSync(outputDir)) rmSync(outputDir, { recursive: true, force: true });
+if (existsSync(wranglerDir)) rmSync(wranglerDir, { recursive: true, force: true });
 
 // 3) Garantir .htaccess (caso o public/.htaccess não tenha sido copiado)
 const htaccessPath = join(distDir, ".htaccess");
@@ -89,8 +89,7 @@ const indexHtml = join(distDir, "index.html");
 if (!existsSync(indexHtml)) {
   console.error(
     "[postbuild] ERRO: dist/index.html não foi gerado.\n" +
-      "  Verifique se `tanstackStart.spa.enabled` e `nitro.preset: 'static'` estão ativos em vite.config.ts,\n" +
-      "  e se o build está sendo executado fora do sandbox de preview (Lovable força cloudflare-module).",
+      "  Execute `npm run build:static`, que usa Vite SPA puro sem Nitro/SSR.",
   );
   process.exit(1);
 }
