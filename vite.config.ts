@@ -15,7 +15,11 @@ const staticBuildConfig = defineViteConfig({
   publicDir: fileURLToPath(new URL("./public", import.meta.url)),
   base: "/",
   plugins: [
-    tanstackRouter({ target: "react" }),
+    tanstackRouter({
+      target: "react",
+      routesDirectory: "../src/routes",
+      generatedRouteTree: "../src/routeTree.gen.ts",
+    }),
     react(),
     tailwindcss(),
     tsconfigPaths(),

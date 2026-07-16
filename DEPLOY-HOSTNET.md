@@ -85,7 +85,6 @@ o build estático não depende de Nitro nem de servidor SSR.
 | --------------- | ------------ | ------------------------------------------- |
 | `index.html`    | **Sim**      | Página inicial servida em `/`               |
 | `assets/`       | **Sim**      | JS/CSS/imagens carregados pelo `index.html` |
-| `assets/`       | Sim          | Imagens/logos usados no `index.html`        |
 | `.htaccess`     | Recomendado  | Fallback SPA + cache dos assets no Apache   |
 | `favicon.ico`   | Opcional     | Ícone da aba do navegador                   |
 | `robots.txt`    | Opcional     | Instruções para crawlers                    |
