@@ -28,7 +28,7 @@ jobs:
         run: npm install
 
       - name: Gerar build estático (pasta dist/)
-        run: npm run build
+        run: npm run build:static
 
       - name: Enviar dist/ para a Hostnet via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
