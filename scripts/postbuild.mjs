@@ -1,70 +1,83 @@
 #!/usr/bin/env node
 /**
- * Postbuild: transforma a saída Nitro/Cloudflare em um bundle estático puro
- * pronto para FTP em hospedagem compartilhada (Hostnet, Apache, Nginx).
+ * Postbuild: normaliza o resultado do build para uma pasta `dist/` limpa,
+ * pronta para envio via FTP a hospedagem compartilhada (Hostnet, Apache).
  *
- * Antes:
- *   dist/
- *     client/         <- HTML, _build/, assets, favicon, .htaccess
- *     server/         <- worker (não usado em hospedagem estática)
- *     nitro.json
+ * Cobre 3 possíveis layouts de saída dependendo do ambiente:
+ *   1) dist/           -> já contém index.html + assets (preset static local)
+ *   2) dist/client/    -> saída típica quando o wrapper força cloudflare-module
+ *                         (sandbox de preview). Move tudo para dist/.
+ *   3) .output/public/ -> saída padrão do Nitro static sem override.
  *
- * Depois:
- *   dist/
- *     index.html
- *     _build/...
- *     favicon.ico
- *     .htaccess
+ * Também garante um .htaccess de fallback SPA e remove artefatos de servidor.
  */
-import { existsSync, rmSync, renameSync, readdirSync, mkdirSync, writeFileSync, statSync, cpSync } from "node:fs";
+import {
+  existsSync,
+  rmSync,
+  renameSync,
+  readdirSync,
+  statSync,
+  writeFileSync,
+  mkdirSync,
+  cpSync,
+} from "node:fs";
 import { join, resolve } from "node:path";
 
-const root = resolve(process.cwd(), "dist");
-const clientDir = join(root, "client");
-const serverDir = join(root, "server");
+const cwd = process.cwd();
+const distDir = resolve(cwd, "dist");
+const clientSubdir = join(distDir, "client");
+const nitroPublic = resolve(cwd, ".output/public");
 
-if (!existsSync(clientDir)) {
-  console.error(`[postbuild] Diretório não encontrado: ${clientDir}`);
-  process.exit(1);
+function moveChildrenInto(srcDir, destDir) {
+  if (!existsSync(destDir)) mkdirSync(destDir, { recursive: true });
+  for (const entry of readdirSync(srcDir)) {
+    const from = join(srcDir, entry);
+    const to = join(destDir, entry);
+    if (existsSync(to)) rmSync(to, { recursive: true, force: true });
+    renameSync(from, to);
+  }
+  rmSync(srcDir, { recursive: true, force: true });
 }
 
-// 1) Remove artefatos de servidor
-for (const junk of ["server", "nitro.json", ".wrangler"]) {
-  const p = join(root, junk);
+// 1) Consolidar layout em dist/
+if (!existsSync(distDir) && existsSync(nitroPublic)) {
+  mkdirSync(distDir, { recursive: true });
+  moveChildrenInto(nitroPublic, distDir);
+  const outputDir = resolve(cwd, ".output");
+  if (existsSync(outputDir)) rmSync(outputDir, { recursive: true, force: true });
+}
+
+if (existsSync(clientSubdir)) {
+  moveChildrenInto(clientSubdir, distDir);
+}
+
+// 2) Remover artefatos de servidor / cloudflare que não fazem sentido em FTP
+for (const junk of [
+  "server",
+  ".server-tmp",
+  "nitro.json",
+  "wrangler.json",
+  "package.json",
+  "package-lock.json",
+  ".wrangler",
+  "_headers",
+  "_routes.json",
+]) {
+  const p = join(distDir, junk);
   if (existsSync(p)) rmSync(p, { recursive: true, force: true });
 }
-if (existsSync(serverDir)) rmSync(serverDir, { recursive: true, force: true });
 
-// 2) Move todo o conteúdo de dist/client/* para dist/
-for (const entry of readdirSync(clientDir)) {
-  const src = join(clientDir, entry);
-  const dest = join(root, entry);
-  if (existsSync(dest)) rmSync(dest, { recursive: true, force: true });
-  renameSync(src, dest);
-}
-rmSync(clientDir, { recursive: true, force: true });
-
-// 3) Garante um .htaccess de fallback SPA (Apache/Hostnet)
-const htaccessPath = join(root, ".htaccess");
+// 3) Garantir .htaccess (caso o public/.htaccess não tenha sido copiado)
+const htaccessPath = join(distDir, ".htaccess");
 if (!existsSync(htaccessPath)) {
   writeFileSync(
     htaccessPath,
-    `# Fallback SPA para Apache (Hostnet e similares)
-<IfModule mod_rewrite.c>
+    `<IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-
-  # Não reescreve arquivos e diretórios reais (assets, imagens, etc.)
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
-</IfModule>
-
-# Cache longo para bundles com hash
-<IfModule mod_headers.c>
-  <FilesMatch "\\.(js|css|woff2?|ttf|otf|eot|png|jpg|jpeg|gif|svg|webp|ico)$">
-    Header set Cache-Control "public, max-age=31536000, immutable"
-  </FilesMatch>
 </IfModule>
 `,
     "utf8",
@@ -72,17 +85,23 @@ if (!existsSync(htaccessPath)) {
 }
 
 // 4) Sanity check
-const indexHtml = join(root, "index.html");
+const indexHtml = join(distDir, "index.html");
 if (!existsSync(indexHtml)) {
-  console.error("[postbuild] ERRO: dist/index.html não foi gerado. Verifique a configuração `tanstackStart.spa` em vite.config.ts.");
+  console.error(
+    "[postbuild] ERRO: dist/index.html não foi gerado.\n" +
+      "  Verifique se `tanstackStart.spa.enabled` e `nitro.preset: 'static'` estão ativos em vite.config.ts,\n" +
+      "  e se o build está sendo executado fora do sandbox de preview (Lovable força cloudflare-module).",
+  );
   process.exit(1);
 }
 
 // 5) Relatório
-const listing = readdirSync(root).map((name) => {
-  const full = join(root, name);
-  const kind = statSync(full).isDirectory() ? "dir " : "file";
-  return `  ${kind}  ${name}`;
-});
+const listing = readdirSync(distDir)
+  .sort()
+  .map((name) => {
+    const full = join(distDir, name);
+    const kind = statSync(full).isDirectory() ? "dir " : "file";
+    return `  ${kind}  ${name}`;
+  });
 console.log("[postbuild] Bundle estático pronto em dist/:");
 console.log(listing.join("\n"));
