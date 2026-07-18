@@ -35,6 +35,7 @@ export function StaticApp() {
         <ProcessSection />
         <OfferSection />
         <DiagnosticSection />
+        <PricingSection />
         <ContactSection />
         <FinalCTA />
       </main>
