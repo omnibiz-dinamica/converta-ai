@@ -16,6 +16,7 @@ import { ProcessSection } from "@/components/sections/ProcessSection";
 import { ResultsSection } from "@/components/sections/ResultsSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { SolutionSection } from "@/components/sections/SolutionSection";
+import { PricingSection } from "@/components/sections/PricingSection";
 
 export function StaticApp() {
   return (
