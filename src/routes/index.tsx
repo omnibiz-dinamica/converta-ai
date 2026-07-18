@@ -14,6 +14,7 @@ import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { OfferSection } from "@/components/sections/OfferSection";
 import { DiagnosticSection } from "@/components/sections/DiagnosticSection";
+import { PricingSection } from "@/components/sections/PricingSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { ChatWidget } from "@/components/chat/ChatWidget";
