@@ -5,6 +5,7 @@ const links = [
   { label: "Sobre", href: "#sobre" },
   { label: "Serviços", href: "#servicos" },
   { label: "Agentes IA", href: "#agentes-ia" },
+  { label: "Preços", href: "#precos" },
   { label: "Portfólio", href: "#portfolio" },
   { label: "Processo", href: "#processo" },
   { label: "Contacto", href: "#contato" },
