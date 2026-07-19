@@ -1,6 +1,6 @@
 import { EMAIL, LINKEDIN, PHONE_DISPLAY, SITE } from "@/lib/contact";
 
-export const SITE_URL = "https://converta-ai.lovable.app";
+export const SITE_URL = "https://www.dinamicasolucao.com";
 export const BRAND_NAME = "Dinâmica Solução";
 
 export const organizationJsonLd = {

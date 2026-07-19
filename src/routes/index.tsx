@@ -36,9 +36,9 @@ export const Route = createFileRoute("/")({
         content:
           "Sistemas, automação e agentes de IA que respondem em segundos e vendem 24/7.",
       },
-      { property: "og:url", content: "https://converta-ai.lovable.app/" },
+      { property: "og:url", content: "https://www.dinamicasolucao.com/" },
     ],
-    links: [{ rel: "canonical", href: "https://converta-ai.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://www.dinamicasolucao.com/" }],
     scripts: [
       {
         type: "application/ld+json",

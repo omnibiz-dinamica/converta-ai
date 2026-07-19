@@ -15,7 +15,7 @@ if (!existsSync(distDir)) {
   process.exit(1);
 }
 
-const publicFiles = [".htaccess", "favicon.ico", "robots.txt"];
+const publicFiles = [".htaccess", "favicon.ico", "robots.txt", "sitemap.xml"];
 
 for (const file of publicFiles) {
   const source = resolve(cwd, "public", file);
