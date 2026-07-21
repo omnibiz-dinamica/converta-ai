@@ -1,29 +1,29 @@
 const projects = [
   {
-    category: "Sistema Corporativo",
-    title: "Sistema de Gestão Interna",
-    desc: "Plataforma integrada para gestão de operações, estoque e indicadores em tempo real para indústria de médio porte.",
+    category: "Modelo de projecto",
+    title: "Sistema de gestão interna",
+    desc: "Plataforma para organizar operações, equipa, tarefas e indicadores num único ambiente ajustado ao processo da empresa.",
     tags: ["React", "Node.js", "PostgreSQL"],
     accent: "primary" as const,
   },
   {
-    category: "Automação · RPA",
-    title: "Automação de Processo de RH",
-    desc: "Automatização completa do fluxo de admissão, onboarding e gestão de documentos para empresa com +200 funcionários.",
+    category: "Modelo de automação",
+    title: "Automação de processos administrativos",
+    desc: "Fluxos para reduzir tarefas repetitivas, organizar documentos e apoiar equipas com validações mais consistentes.",
     tags: ["RPA", "Python", "APIs"],
     accent: "accent" as const,
   },
   {
-    category: "E-commerce",
-    title: "E-commerce + Plataforma Web",
-    desc: "Loja virtual com painel administrativo completo, integração com gateways de pagamento e logística automatizada.",
+    category: "Modelo web",
+    title: "Site ou plataforma comercial",
+    desc: "Experiência digital com páginas claras, formulário de contacto, integração com WhatsApp e base preparada para SEO.",
     tags: ["Next.js", "Stripe", "AWS"],
     accent: "primary" as const,
   },
   {
-    category: "Inteligência Artificial",
-    title: "Agente IA para Atendimento",
-    desc: "Chatbot inteligente integrado ao WhatsApp e Instagram com qualificação automática de leads e disponibilidade ampliada.",
+    category: "Modelo IA",
+    title: "Agente IA para atendimento",
+    desc: "Exemplo de agente para responder dúvidas frequentes, recolher dados, qualificar pedidos e encaminhar para atendimento humano.",
     tags: ["IA", "WhatsApp API", "NLP"],
     accent: "accent" as const,
   },
@@ -38,10 +38,11 @@ export function PortfolioSection() {
             Portfólio
           </span>
           <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-            Projetos que <span className="text-gradient">geram resultados</span>
+            Exemplos de soluções que podemos <span className="text-gradient">desenvolver</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Conheça alguns dos projetos que desenvolvemos e como impactaram nossos clientes.
+            Estruturas típicas de projectos para demonstrar possibilidades. Casos reais e métricas
+            podem ser adicionados quando houver autorização e dados confirmados.
           </p>
         </div>
 

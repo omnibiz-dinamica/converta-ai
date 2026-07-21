@@ -13,7 +13,11 @@ const schema = z.object({
   email: z.string().trim().email("E-mail inválido").max(255),
   phone: z.string().trim().min(6, "Telefone inválido").max(30),
   company: z.string().trim().max(100).optional().or(z.literal("")),
+  sector: z.string().trim().max(100).optional().or(z.literal("")),
+  companySize: z.string().trim().max(80).optional().or(z.literal("")),
   service: z.string().min(1, "Selecione um serviço"),
+  urgency: z.string().trim().max(80).optional().or(z.literal("")),
+  budget: z.string().trim().max(80).optional().or(z.literal("")),
   message: z.string().trim().max(1000).optional().or(z.literal("")),
 });
 
@@ -26,6 +30,31 @@ const services = [
   "Agente Inteligente de IA",
   "Consultoria Tech",
   "Outro",
+];
+
+const sectors = [
+  "Serviços profissionais",
+  "Comércio / Retalho",
+  "Logística / Operações",
+  "Saúde / Bem-estar",
+  "Educação / Formação",
+  "Outro",
+];
+
+const companySizes = ["1-5 pessoas", "6-20 pessoas", "21-75 pessoas", "76+ pessoas"];
+
+const urgencies = [
+  "Ainda estou a avaliar",
+  "Quero começar nas próximas semanas",
+  "Preciso resolver com urgência",
+];
+
+const budgets = [
+  "Ainda não definido",
+  "Até 500 EUR",
+  "500-1.500 EUR",
+  "1.500-5.000 EUR",
+  "Acima de 5.000 EUR",
 ];
 
 interface Props {
@@ -60,9 +89,13 @@ export function ContactForm({ onSubmitted }: Props) {
 
     const text = `Olá! Sou ${values.name}.
 Empresa: ${values.company || "—"}
+Sector: ${values.sector || "—"}
+Dimensão: ${values.companySize || "—"}
 E-mail: ${values.email}
 Telefone: ${values.phone}
 Serviço: ${values.service}
+Urgência: ${values.urgency || "—"}
+Orçamento previsto: ${values.budget || "—"}
 Mensagem: ${values.message || "—"}${file ? `\nAnexo: ${file.name}` : ""}`;
     window.open(wa(text), "_blank", "noopener,noreferrer");
     setSent(true);
@@ -87,6 +120,23 @@ Mensagem: ${values.message || "—"}${file ? `\nAnexo: ${file.name}` : ""}`;
         <Field label="Empresa" error={errors.company?.message} {...register("company")} />
       </div>
 
+      <div className="grid gap-4 sm:grid-cols-2">
+        <SelectField
+          label="Sector"
+          options={sectors}
+          placeholder="Selecione o sector"
+          error={errors.sector?.message}
+          {...register("sector")}
+        />
+        <SelectField
+          label="Dimensão da empresa"
+          options={companySizes}
+          placeholder="Selecione a dimensão"
+          error={errors.companySize?.message}
+          {...register("companySize")}
+        />
+      </div>
+
       <div>
         <label className="mb-1.5 block text-sm font-medium text-foreground">Serviço de interesse *</label>
         <select
@@ -100,8 +150,27 @@ Mensagem: ${values.message || "—"}${file ? `\nAnexo: ${file.name}` : ""}`;
         {errors.service && <p className="mt-1 text-xs text-destructive">{errors.service.message}</p>}
       </div>
 
+      <div className="grid gap-4 sm:grid-cols-2">
+        <SelectField
+          label="Urgência"
+          options={urgencies}
+          placeholder="Selecione a urgência"
+          error={errors.urgency?.message}
+          {...register("urgency")}
+        />
+        <SelectField
+          label="Orçamento previsto"
+          options={budgets}
+          placeholder="Selecione uma faixa"
+          error={errors.budget?.message}
+          {...register("budget")}
+        />
+      </div>
+
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-foreground">Descreva brevemente</label>
+        <label className="mb-1.5 block text-sm font-medium text-foreground">
+          Descreva brevemente o desafio
+        </label>
         <textarea
           {...register("message")}
           rows={4}
@@ -157,6 +226,36 @@ const Field = ({
       maxLength={255}
       className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-smooth focus:border-primary"
     />
+    {error && <p className="mt-1 text-xs text-destructive">{error}</p>}
+  </div>
+);
+
+const SelectField = ({
+  label,
+  error,
+  options,
+  placeholder,
+  ...props
+}: React.SelectHTMLAttributes<HTMLSelectElement> & {
+  label: string;
+  error?: string;
+  options: string[];
+  placeholder: string;
+}) => (
+  <div>
+    <label className="mb-1.5 block text-sm font-medium text-foreground">{label}</label>
+    <select
+      {...props}
+      defaultValue=""
+      className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-smooth focus:border-primary"
+    >
+      <option value="">{placeholder}</option>
+      {options.map((option) => (
+        <option key={option} value={option}>
+          {option}
+        </option>
+      ))}
+    </select>
     {error && <p className="mt-1 text-xs text-destructive">{error}</p>}
   </div>
 );
