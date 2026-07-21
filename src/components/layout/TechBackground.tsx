@@ -4,10 +4,8 @@ export function TechBackground() {
       aria-hidden
       className="pointer-events-none fixed inset-0 -z-[1] overflow-hidden"
       style={{
-        maskImage:
-          "radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 85%)",
-        WebkitMaskImage:
-          "radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 85%)",
+        maskImage: "radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 85%)",
+        WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 40%, black 40%, transparent 85%)",
       }}
     >
       {/* Flowing circuit traces */}
@@ -69,9 +67,18 @@ export function TechBackground() {
         {/* Circuit nodes */}
         <g>
           {[
-            [280, 180], [320, 220], [640, 220], [680, 260],
-            [200, 420], [520, 380], [900, 340], [940, 380],
-            [360, 640], [400, 680], [780, 680], [820, 640],
+            [280, 180],
+            [320, 220],
+            [640, 220],
+            [680, 260],
+            [200, 420],
+            [520, 380],
+            [900, 340],
+            [940, 380],
+            [360, 640],
+            [400, 680],
+            [780, 680],
+            [820, 640],
           ].map(([cx, cy], i) => (
             <g key={i}>
               <circle cx={cx} cy={cy} r="3" fill="oklch(1 0 0)" />
@@ -117,9 +124,7 @@ export function TechBackground() {
               style={{
                 left: `${left}%`,
                 top: `${top}%`,
-                background: isGreen
-                  ? "oklch(0.68 0.18 145 / 0.7)"
-                  : "oklch(0.62 0.19 250 / 0.7)",
+                background: isGreen ? "oklch(0.68 0.18 145 / 0.7)" : "oklch(0.62 0.19 250 / 0.7)",
                 boxShadow: isGreen
                   ? "0 0 8px oklch(0.68 0.18 145 / 0.6)"
                   : "0 0 8px oklch(0.62 0.19 250 / 0.6)",

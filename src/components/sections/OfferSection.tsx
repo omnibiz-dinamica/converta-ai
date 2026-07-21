@@ -1,8 +1,24 @@
 const includes = [
-  { icon: "⚙️", title: "Configuração completa", desc: "Setup de ponta a ponta com acompanhamento próximo." },
-  { icon: "🤖", title: "IA treinada para a sua empresa", desc: "Linguagem, regras e produtos adaptados ao seu contexto." },
-  { icon: "🔗", title: "Integração com WhatsApp e canais", desc: "Tudo conectado e funcionando em harmonia." },
-  { icon: "📊", title: "Ajustes e otimização", desc: "Acompanhamento contínuo para evoluir resultados." },
+  {
+    icon: "⚙️",
+    title: "Configuração completa",
+    desc: "Setup de ponta a ponta com acompanhamento próximo.",
+  },
+  {
+    icon: "🤖",
+    title: "IA treinada para a sua empresa",
+    desc: "Linguagem, regras e produtos adaptados ao seu contexto.",
+  },
+  {
+    icon: "🔗",
+    title: "Integração com WhatsApp e canais",
+    desc: "Tudo conectado e funcionando em harmonia.",
+  },
+  {
+    icon: "📊",
+    title: "Ajustes e otimização",
+    desc: "Acompanhamento contínuo para evoluir resultados.",
+  },
 ];
 
 export function OfferSection() {

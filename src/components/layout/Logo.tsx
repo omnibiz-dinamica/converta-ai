@@ -4,11 +4,7 @@ export function Logo({ className = "" }: { className?: string }) {
   return (
     <div className={`flex items-center gap-2.5 ${className}`}>
       <div className="relative">
-        <img
-          src={logoIcon}
-          alt="Dinâmica Solução"
-          className="h-9 w-9 object-contain"
-        />
+        <img src={logoIcon} alt="Dinâmica Solução" className="h-9 w-9 object-contain" />
       </div>
       <div className="flex flex-col leading-none">
         <span className="font-display text-base font-bold tracking-tight text-foreground">

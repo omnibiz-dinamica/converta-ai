@@ -33,7 +33,10 @@ export const Route = createFileRoute("/")({
         content:
           "Automatize o atendimento, reduza tarefas manuais e aumente as vendas com agentes de IA, sistemas personalizados e automação de processos.",
       },
-      { property: "og:title", content: "Dinâmica Solução | Automação, IA e Desenvolvimento de Sistemas" },
+      {
+        property: "og:title",
+        content: "Dinâmica Solução | Automação, IA e Desenvolvimento de Sistemas",
+      },
       {
         property: "og:description",
         content:

@@ -34,8 +34,8 @@ export function UseCasesSection() {
             <span className="text-gradient-accent">impacto prático</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Exemplos de aplicação para PME que precisam organizar atendimento, processos e dados
-            sem depender de soluções genéricas.
+            Exemplos de aplicação para PME que precisam organizar atendimento, processos e dados sem
+            depender de soluções genéricas.
           </p>
         </div>
 

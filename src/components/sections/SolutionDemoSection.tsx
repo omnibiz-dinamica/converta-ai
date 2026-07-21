@@ -42,8 +42,8 @@ export function SolutionDemoSection() {
               <span className="text-gradient">um pedido qualificado</span>
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-              Este é um exemplo visual do fluxo. A implementação real é ajustada ao processo,
-              canais e equipa da sua empresa.
+              Este é um exemplo visual do fluxo. A implementação real é ajustada ao processo, canais
+              e equipa da sua empresa.
             </p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -111,7 +111,9 @@ export function SolutionDemoSection() {
                         className="flex items-center justify-between gap-4 rounded-xl border border-border bg-background/60 px-4 py-3"
                       >
                         <span className="text-xs text-muted-foreground">{label}</span>
-                        <span className="text-right text-sm font-semibold text-foreground">{value}</span>
+                        <span className="text-right text-sm font-semibold text-foreground">
+                          {value}
+                        </span>
                       </div>
                     ))}
                   </div>

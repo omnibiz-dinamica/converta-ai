@@ -38,11 +38,21 @@ export function ChatWidget() {
       >
         <AnimatePresence mode="wait" initial={false}>
           {open ? (
-            <motion.span key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>
+            <motion.span
+              key="x"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+            >
               <X className="h-6 w-6" />
             </motion.span>
           ) : (
-            <motion.span key="chat" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}>
+            <motion.span
+              key="chat"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+            >
               <MessageSquare className="h-6 w-6" />
             </motion.span>
           )}
@@ -69,7 +79,11 @@ export function ChatWidget() {
                   <p className="text-xs text-primary">● Online · IA</p>
                 </div>
               </div>
-              <button onClick={() => setOpen(false)} aria-label="Fechar" className="rounded-lg p-1.5 text-muted-foreground transition-smooth hover:bg-secondary hover:text-foreground">
+              <button
+                onClick={() => setOpen(false)}
+                aria-label="Fechar"
+                className="rounded-lg p-1.5 text-muted-foreground transition-smooth hover:bg-secondary hover:text-foreground"
+              >
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -77,7 +91,10 @@ export function ChatWidget() {
             {/* Messages */}
             <div ref={listRef} className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
               {messages.map((m) => (
-                <div key={m.id} className={cn("flex", m.role === "user" ? "justify-end" : "justify-start")}>
+                <div
+                  key={m.id}
+                  className={cn("flex", m.role === "user" ? "justify-end" : "justify-start")}
+                >
                   <div
                     className={cn(
                       "max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed",
@@ -107,7 +124,10 @@ export function ChatWidget() {
             </div>
 
             {/* Input */}
-            <form onSubmit={onSubmit} className="flex items-center gap-2 border-t border-border bg-background/70 p-3">
+            <form
+              onSubmit={onSubmit}
+              className="flex items-center gap-2 border-t border-border bg-background/70 p-3"
+            >
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}

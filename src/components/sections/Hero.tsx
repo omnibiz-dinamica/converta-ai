@@ -14,8 +14,7 @@ export function Hero() {
           backgroundImage:
             "linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)",
           backgroundSize: "48px 48px",
-          maskImage:
-            "radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 80%)",
+          maskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 80%)",
         }}
       />
 
@@ -118,7 +117,8 @@ export function Hero() {
                     Olá! Vocês entregam em Lisboa hoje?
                   </div>
                   <div className="ml-auto max-w-[85%] rounded-2xl rounded-tr-sm bg-gradient-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-glow-primary">
-                    Olá 👋 Sim! Posso reservar agora para entrega ainda hoje. Confirma o Código Postal?
+                    Olá 👋 Sim! Posso reservar agora para entrega ainda hoje. Confirma o Código
+                    Postal?
                   </div>
                   <div className="flex items-center gap-2 text-xs text-muted-foreground">
                     <span className="relative flex h-2 w-2">

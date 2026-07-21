@@ -12,8 +12,5 @@ export interface ChatSendOptions {
 }
 
 export interface ChatService {
-  send(
-    messages: ChatMessage[],
-    options?: ChatSendOptions,
-  ): Promise<{ reply: ChatMessage }>;
+  send(messages: ChatMessage[], options?: ChatSendOptions): Promise<{ reply: ChatMessage }>;
 }

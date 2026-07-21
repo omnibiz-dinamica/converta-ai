@@ -138,16 +138,26 @@ Mensagem: ${values.message || "—"}${file ? `\nAnexo: ${file.name}` : ""}`;
       </div>
 
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-foreground">Serviço de interesse *</label>
+        <label className="mb-1.5 block text-sm font-medium text-foreground">
+          Serviço de interesse *
+        </label>
         <select
           {...register("service")}
           defaultValue=""
           className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-smooth focus:border-primary"
         >
-          <option value="" disabled>Selecione um serviço</option>
-          {services.map((s) => <option key={s} value={s}>{s}</option>)}
+          <option value="" disabled>
+            Selecione um serviço
+          </option>
+          {services.map((s) => (
+            <option key={s} value={s}>
+              {s}
+            </option>
+          ))}
         </select>
-        {errors.service && <p className="mt-1 text-xs text-destructive">{errors.service.message}</p>}
+        {errors.service && (
+          <p className="mt-1 text-xs text-destructive">{errors.service.message}</p>
+        )}
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -184,11 +194,19 @@ Mensagem: ${values.message || "—"}${file ? `\nAnexo: ${file.name}` : ""}`;
         <label className="flex cursor-pointer items-center gap-3 rounded-xl border border-dashed border-border bg-background/40 px-4 py-3 text-sm text-muted-foreground transition-smooth hover:border-primary hover:text-foreground">
           <Paperclip className="h-4 w-4" />
           <span>{file ? file.name : "Anexar briefing / documento (opcional, máx 5MB)"}</span>
-          <input type="file" className="hidden" onChange={onFile} accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" />
+          <input
+            type="file"
+            className="hidden"
+            onChange={onFile}
+            accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
+          />
           {file && (
             <button
               type="button"
-              onClick={(e) => { e.preventDefault(); setFile(null); }}
+              onClick={(e) => {
+                e.preventDefault();
+                setFile(null);
+              }}
               className="ml-auto rounded-md p-1 hover:bg-secondary"
               aria-label="Remover ficheiro"
             >
@@ -217,7 +235,9 @@ Mensagem: ${values.message || "—"}${file ? `\nAnexo: ${file.name}` : ""}`;
 }
 
 const Field = ({
-  label, error, ...props
+  label,
+  error,
+  ...props
 }: React.InputHTMLAttributes<HTMLInputElement> & { label: string; error?: string }) => (
   <div>
     <label className="mb-1.5 block text-sm font-medium text-foreground">{label}</label>

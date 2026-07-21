@@ -24,11 +24,23 @@ export function ContactSection() {
 
           <div className="lg:pt-16">
             <div className="rounded-3xl border border-border bg-gradient-card p-8 shadow-card">
-              <h3 className="font-display text-xl font-bold text-foreground">Informações de contacto</h3>
+              <h3 className="font-display text-xl font-bold text-foreground">
+                Informações de contacto
+              </h3>
               <ul className="mt-6 space-y-4 text-sm">
                 <ContactItem icon="✉️" label="E-mail" value={EMAIL} href={`mailto:${EMAIL}`} />
-                <ContactItem icon="💬" label="WhatsApp" value={PHONE_DISPLAY} href={wa("Olá! Vim pelo site dinamicasolucao.com")} />
-                <ContactItem icon="📞" label="Telefone" value={PHONE_DISPLAY} href={`tel:+${PHONE_NUMBER}`} />
+                <ContactItem
+                  icon="💬"
+                  label="WhatsApp"
+                  value={PHONE_DISPLAY}
+                  href={wa("Olá! Vim pelo site dinamicasolucao.com")}
+                />
+                <ContactItem
+                  icon="📞"
+                  label="Telefone"
+                  value={PHONE_DISPLAY}
+                  href={`tel:+${PHONE_NUMBER}`}
+                />
                 <ContactItem icon="💼" label="LinkedIn" value="dinamicasolucao" href={LINKEDIN} />
               </ul>
             </div>
@@ -37,7 +49,8 @@ export function ContactSection() {
               <h4 className="font-display text-lg font-bold text-foreground">⚡ Resposta rápida</h4>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 A nossa equipa analisa cada pedido individualmente e responde em até{" "}
-                <span className="font-semibold text-foreground">24 horas úteis</span> com uma proposta personalizada.
+                <span className="font-semibold text-foreground">24 horas úteis</span> com uma
+                proposta personalizada.
               </p>
             </div>
           </div>
@@ -47,7 +60,17 @@ export function ContactSection() {
   );
 }
 
-function ContactItem({ icon, label, value, href }: { icon: string; label: string; value: string; href: string }) {
+function ContactItem({
+  icon,
+  label,
+  value,
+  href,
+}: {
+  icon: string;
+  label: string;
+  value: string;
+  href: string;
+}) {
   return (
     <li>
       <a
@@ -56,10 +79,16 @@ function ContactItem({ icon, label, value, href }: { icon: string; label: string
         rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
         className="group flex items-center gap-4 rounded-2xl border border-border bg-background/40 p-4 transition-smooth hover:border-primary/40"
       >
-        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-primary text-lg shadow-glow-primary">{icon}</span>
+        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-primary text-lg shadow-glow-primary">
+          {icon}
+        </span>
         <div className="flex-1">
-          <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{label}</div>
-          <div className="text-sm font-medium text-foreground transition-smooth group-hover:text-primary">{value}</div>
+          <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            {label}
+          </div>
+          <div className="text-sm font-medium text-foreground transition-smooth group-hover:text-primary">
+            {value}
+          </div>
         </div>
       </a>
     </li>

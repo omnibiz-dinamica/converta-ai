@@ -84,7 +84,11 @@ const modules = [
 ];
 
 const launchOffers = [
-  { icon: "🎁", title: "1º mês grátis", desc: "Comece sem pagar o primeiro mês em qualquer plano." },
+  {
+    icon: "🎁",
+    title: "1º mês grátis",
+    desc: "Comece sem pagar o primeiro mês em qualquer plano.",
+  },
   { icon: "🧪", title: "30 dias de teste", desc: "Teste completo sem necessidade de cartão." },
   { icon: "💸", title: "-50% por 3 meses", desc: "Metade do preço nos primeiros 3 meses." },
 ];
@@ -105,8 +109,8 @@ export function PricingSection() {
             Planos simples para <span className="text-gradient">crescer por módulos</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Comece pequeno, cresça por módulos e mantenha custos previsíveis. Preços para
-            Portugal, Bélgica e Espanha — com tabela equivalente para o Brasil.
+            Comece pequeno, cresça por módulos e mantenha custos previsíveis. Preços para Portugal,
+            Bélgica e Espanha — com tabela equivalente para o Brasil.
           </p>
         </div>
 
@@ -135,7 +139,9 @@ export function PricingSection() {
 
               <div className="mt-5">
                 <div className="flex items-baseline gap-1">
-                  <span className="font-display text-4xl font-bold text-foreground">{p.priceEUR}</span>
+                  <span className="font-display text-4xl font-bold text-foreground">
+                    {p.priceEUR}
+                  </span>
                   <span className="text-sm text-muted-foreground">/mês</span>
                 </div>
                 <p className="mt-1 text-xs text-muted-foreground">{p.yearlyEUR}</p>
@@ -221,7 +227,9 @@ export function PricingSection() {
                 }`}
               >
                 <span className="text-sm font-semibold text-foreground">{m.name}</span>
-                <span className={`text-sm ${m.highlight ? "text-primary font-medium" : "text-muted-foreground"}`}>
+                <span
+                  className={`text-sm ${m.highlight ? "text-primary font-medium" : "text-muted-foreground"}`}
+                >
                   {m.price}
                 </span>
               </div>
@@ -285,7 +293,9 @@ function FeatureLi({ ok, children }: { ok: boolean; children: React.ReactNode })
       ) : (
         <X className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground/60" />
       )}
-      <span className={ok ? "text-foreground" : "text-muted-foreground line-through"}>{children}</span>
+      <span className={ok ? "text-foreground" : "text-muted-foreground line-through"}>
+        {children}
+      </span>
     </li>
   );
 }

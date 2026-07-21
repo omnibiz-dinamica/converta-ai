@@ -32,5 +32,4 @@ const dictionaries: Record<Locale, Dict> = {
   },
 };
 
-export const t = (key: string, locale: Locale = DEFAULT_LOCALE) =>
-  dictionaries[locale][key] ?? key;
+export const t = (key: string, locale: Locale = DEFAULT_LOCALE) => dictionaries[locale][key] ?? key;

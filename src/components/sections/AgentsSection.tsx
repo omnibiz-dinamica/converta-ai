@@ -50,8 +50,7 @@ export function AgentsSection() {
               Parceria Estratégica · IA · Em destaque
             </span>
             <h2 className="mt-5 font-display text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl">
-              Atendimento inteligente que{" "}
-              <span className="text-gradient-accent">nunca dorme</span>
+              Atendimento inteligente que <span className="text-gradient-accent">nunca dorme</span>
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
               Em parceria com empresa especializada em IA, oferecemos agentes inteligentes que
@@ -118,8 +117,8 @@ export function AgentsSection() {
                 </div>
 
                 <div className="ml-auto max-w-[88%] rounded-2xl rounded-tr-sm bg-gradient-primary px-4 py-2.5 font-medium text-primary-foreground shadow-glow-primary">
-                  Olá! 👋 Sou o assistente da Dinâmica Solução. Posso ajudar com automação. Qual
-                  é o sector da sua empresa?
+                  Olá! 👋 Sou o assistente da Dinâmica Solução. Posso ajudar com automação. Qual é o
+                  sector da sua empresa?
                 </div>
 
                 <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-secondary px-4 py-2.5 text-foreground">

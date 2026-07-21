@@ -36,7 +36,10 @@ export const Route = createRootRoute({
           "Automatize o atendimento, reduza tarefas manuais e aumente as vendas com agentes de IA, sistemas personalizados e automação de processos.",
       },
       { name: "author", content: "Dinâmica Solução" },
-      { property: "og:title", content: "Dinâmica Solução | Automação, IA e Desenvolvimento de Sistemas" },
+      {
+        property: "og:title",
+        content: "Dinâmica Solução | Automação, IA e Desenvolvimento de Sistemas",
+      },
       {
         property: "og:description",
         content:
@@ -45,7 +48,10 @@ export const Route = createRootRoute({
       { property: "og:url", content: "https://www.dinamicasolucao.com/" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Dinâmica Solução | Automação, IA e Desenvolvimento de Sistemas" },
+      {
+        name: "twitter:title",
+        content: "Dinâmica Solução | Automação, IA e Desenvolvimento de Sistemas",
+      },
       {
         name: "twitter:description",
         content:

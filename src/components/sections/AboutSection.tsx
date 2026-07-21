@@ -38,7 +38,11 @@ export function AboutSection() {
               {features.map((f) => (
                 <li key={f} className="flex items-start gap-3">
                   <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-primary shadow-glow-primary">
-                    <svg viewBox="0 0 24 24" fill="none" className="h-3 w-3 text-primary-foreground">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className="h-3 w-3 text-primary-foreground"
+                    >
                       <path
                         d="M5 12l5 5L20 7"
                         stroke="currentColor"
