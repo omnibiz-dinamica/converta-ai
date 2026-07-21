@@ -12,7 +12,7 @@ export const organizationJsonLd = {
   email: EMAIL,
   telephone: PHONE_DISPLAY,
   description:
-    "Tecnologia inteligente: agentes de IA, automação de processos (RPA), desenvolvimento de sistemas, sites e consultoria.",
+    "Tecnologia inteligente: agentes de IA, automação de processos, desenvolvimento de sistemas, sites e consultoria tecnológica.",
 };
 
 export const websiteJsonLd = {

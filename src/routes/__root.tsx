@@ -7,16 +7,16 @@ function NotFoundComponent() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Página não encontrada</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          A página que procura não existe ou foi movida.
         </p>
         <div className="mt-6">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            Voltar ao início
           </Link>
         </div>
       </div>
@@ -29,26 +29,27 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Dinâmica Solução — Automação de Atendimento com IA" },
+      { title: "Dinâmica Solução | Automação, IA e Desenvolvimento de Sistemas" },
       {
         name: "description",
         content:
-          "Automatize seu atendimento com IA. Responda em segundos no WhatsApp, Instagram e site. Aumente vendas 24/7.",
+          "Automatize o atendimento, reduza tarefas manuais e aumente as vendas com agentes de IA, sistemas personalizados e automação de processos.",
       },
       { name: "author", content: "Dinâmica Solução" },
-      { property: "og:title", content: "Dinâmica Solução — Automação de Atendimento com IA" },
+      { property: "og:title", content: "Dinâmica Solução | Automação, IA e Desenvolvimento de Sistemas" },
       {
         property: "og:description",
         content:
-          "Pare de perder clientes por demora. Automatize atendimento com IA e venda todos os dias.",
+          "Agentes de IA, sistemas personalizados e automação de processos para pequenas e médias empresas.",
       },
+      { property: "og:url", content: "https://www.dinamicasolucao.com/" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Dinâmica Solução — Automação de Atendimento com IA" },
+      { name: "twitter:title", content: "Dinâmica Solução | Automação, IA e Desenvolvimento de Sistemas" },
       {
         name: "twitter:description",
         content:
-          "Pare de perder clientes por demora. Automatize atendimento com IA e venda todos os dias.",
+          "Automatize atendimento e processos com agentes de IA, sistemas personalizados e consultoria tecnológica.",
       },
     ],
     links: [
@@ -68,7 +69,7 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-PT">
       <head>
         <HeadContent />
       </head>

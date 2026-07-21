@@ -1,10 +1,10 @@
 import { wa } from "@/lib/contact";
 
 const bullets = [
-  { icon: "⚡", text: "Respostas instantâneas 24/7" },
+  { icon: "⚡", text: "Respostas rápidas e consistentes" },
   { icon: "💬", text: "WhatsApp, Instagram e site integrados" },
   { icon: "🎯", text: "Qualificação automática de leads" },
-  { icon: "📈", text: "Aumento direto na conversão" },
+  { icon: "📈", text: "Melhoria na conversão" },
   { icon: "🔥", text: "Nunca mais perca um cliente" },
 ];
 
@@ -22,20 +22,20 @@ export function SolutionSection() {
               A solução
             </span>
             <h2 className="mt-5 font-display text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl">
-              Automatize seu atendimento e{" "}
+              Automatize o seu atendimento e{" "}
               <span className="text-gradient">transforme conversas em clientes</span>
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              Enquanto você dorme, seu sistema responde, qualifica e vende.
+              Enquanto a equipa está ocupada, o sistema responde, qualifica e encaminha.
             </p>
 
             <a
-              href={wa("Quero parar de perder clientes")}
+              href={wa("Quero reduzir oportunidades perdidas")}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-glow-primary transition-bounce hover:scale-[1.03]"
             >
-              👉 Quero parar de perder clientes
+              👉 Quero reduzir oportunidades perdidas
             </a>
           </div>
 

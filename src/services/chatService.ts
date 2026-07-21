@@ -13,7 +13,7 @@ const SCRIPT = [
   "Olá! 👋 Sou o assistente da Dinâmica Solução. Em que posso ajudar?",
   "Posso falar-lhe sobre os nossos serviços: Agentes de IA, automação de processos (RPA), desenvolvimento de sistemas, sites e consultoria tech.",
   "Quer um diagnóstico gratuito? Posso encaminhá-lo para um especialista no WhatsApp.",
-  "Excelente! Vou registar o seu interesse — entretanto pode preencher o formulário ou falar connosco direto no +351 914 185 760.",
+  "Excelente! Vou registar o seu interesse — entretanto pode preencher o formulário ou falar connosco diretamente no +351 914 185 760.",
 ];
 
 let step = 0;
@@ -28,13 +28,13 @@ export const mockChatService: ChatService = {
 
     if (/preço|orçamento|custo|valor/.test(last)) {
       content =
-        "Os valores dependem do escopo. Posso pedir a um especialista para preparar uma proposta — quer deixar o seu contacto no formulário abaixo?";
+        "Os valores dependem do âmbito. Posso pedir a um especialista para preparar uma proposta — quer deixar o seu contacto no formulário abaixo?";
     } else if (/whatsapp|telefone|contacto|falar/.test(last)) {
       content =
         "Claro! Fale connosco no WhatsApp: +351 914 185 760 ou use o botão verde no canto da página.";
     } else if (/ia|agente|chatbot/.test(last)) {
       content =
-        "Os nossos Agentes de IA atendem 24/7 no WhatsApp, Instagram e site — qualificam leads, agendam reuniões e integram com o seu CRM. Quer ver um demo?";
+        "Os nossos Agentes de IA podem atender no WhatsApp, Instagram e site — qualificam leads, recolhem dados e encaminham para a equipa. Quer ver uma demonstração?";
     } else {
       content = SCRIPT[step % SCRIPT.length];
       step++;

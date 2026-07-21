@@ -3,8 +3,8 @@ import { wa } from "@/lib/contact";
 const benefits = [
   {
     icon: "⚡",
-    title: "Respostas automáticas 24/7",
-    desc: "Seu atendimento nunca fecha. Respostas instantâneas a qualquer hora.",
+    title: "Respostas automáticas",
+    desc: "Atendimento com disponibilidade ampliada e respostas consistentes.",
   },
   {
     icon: "💬",
@@ -23,8 +23,8 @@ const benefits = [
   },
   {
     icon: "📈",
-    title: "Escala sem equipe extra",
-    desc: "Atenda centenas de conversas simultâneas sem aumentar seu time.",
+    title: "Escala sem equipa extra",
+    desc: "Atenda mais conversas em simultâneo sem aumentar a equipa.",
   },
 ];
 
@@ -56,7 +56,7 @@ export function AgentsSection() {
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
               Em parceria com empresa especializada em IA, oferecemos agentes inteligentes que
               automatizam o atendimento da sua empresa nas redes sociais — com qualidade, velocidade
-              e disponibilidade 24/7.
+              e disponibilidade ampliada.
             </p>
 
             <ul className="mt-8 space-y-3">
@@ -118,8 +118,8 @@ export function AgentsSection() {
                 </div>
 
                 <div className="ml-auto max-w-[88%] rounded-2xl rounded-tr-sm bg-gradient-primary px-4 py-2.5 font-medium text-primary-foreground shadow-glow-primary">
-                  Olá! 👋 Sou o assistente da Dinâmica Solução. Posso te ajudar com automação! Qual
-                  é o seu segmento?
+                  Olá! 👋 Sou o assistente da Dinâmica Solução. Posso ajudar com automação. Qual
+                  é o sector da sua empresa?
                 </div>
 
                 <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-secondary px-4 py-2.5 text-foreground">
@@ -127,8 +127,7 @@ export function AgentsSection() {
                 </div>
 
                 <div className="ml-auto max-w-[90%] rounded-2xl rounded-tr-sm bg-gradient-primary px-4 py-2.5 font-medium text-primary-foreground shadow-glow-primary">
-                  Ótimo! Temos cases em logística com redução de até 60% em tarefas manuais. Vou te
-                  conectar com um especialista! 🚀
+                  Ótimo! Podemos analisar o fluxo de atendimento e encaminhar para um especialista.
                 </div>
 
                 <div className="flex items-center gap-2 pt-1 text-xs text-muted-foreground">
@@ -157,7 +156,7 @@ export function AgentsSection() {
 
             {/* Selo */}
             <div className="absolute -right-3 top-6 rotate-6 rounded-2xl border border-accent/40 bg-gradient-accent px-3 py-2 text-xs font-bold text-accent-foreground shadow-glow-accent animate-float">
-              IA · 24/7
+              IA · Respostas rápidas
             </div>
           </div>
         </div>

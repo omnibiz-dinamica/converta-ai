@@ -1,8 +1,8 @@
 const stats = [
-  { icon: "📈", value: "70%", label: "Menos trabalho manual" },
+  { icon: "📈", value: "Menos", label: "Trabalho manual repetitivo" },
   { icon: "⚡", value: "Segundos", label: "Em vez de horas para responder" },
-  { icon: "💰", value: "+Leads", label: "Convertidos automaticamente" },
-  { icon: "🔄", value: "24/7", label: "Atendimento ativo sem parar" },
+  { icon: "💰", value: "+Leads", label: "Qualificados com mais contexto" },
+  { icon: "🔄", value: "Contínuo", label: "Atendimento com disponibilidade ampliada" },
 ];
 
 export function ResultsSection() {
@@ -14,8 +14,8 @@ export function ResultsSection() {
             Resultados
           </span>
           <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-            Resultados que impactam diretamente seu{" "}
-            <span className="text-gradient-accent">faturamento</span>
+            Resultados que impactam diretamente a sua{" "}
+            <span className="text-gradient-accent">operação</span>
           </h2>
         </div>
 

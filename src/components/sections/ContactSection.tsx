@@ -11,10 +11,10 @@ export function ContactSection() {
               Contacto
             </span>
             <h2 className="mt-5 font-display text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl">
-              Vamos construir sua <span className="text-gradient">solução?</span>
+              Vamos construir a sua <span className="text-gradient">solução?</span>
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              Conte-nos sobre seu projeto e receba um orçamento personalizado.
+              Conte-nos sobre o seu projeto e receba um orçamento personalizado.
             </p>
 
             <div className="mt-10">
@@ -24,7 +24,7 @@ export function ContactSection() {
 
           <div className="lg:pt-16">
             <div className="rounded-3xl border border-border bg-gradient-card p-8 shadow-card">
-              <h3 className="font-display text-xl font-bold text-foreground">Informações de contato</h3>
+              <h3 className="font-display text-xl font-bold text-foreground">Informações de contacto</h3>
               <ul className="mt-6 space-y-4 text-sm">
                 <ContactItem icon="✉️" label="E-mail" value={EMAIL} href={`mailto:${EMAIL}`} />
                 <ContactItem icon="💬" label="WhatsApp" value={PHONE_DISPLAY} href={wa("Olá! Vim pelo site dinamicasolucao.com")} />
@@ -34,9 +34,9 @@ export function ContactSection() {
             </div>
 
             <div className="mt-6 rounded-3xl border border-primary/30 bg-primary/5 p-8">
-              <h4 className="font-display text-lg font-bold text-foreground">⚡ Resposta rápida garantida</h4>
+              <h4 className="font-display text-lg font-bold text-foreground">⚡ Resposta rápida</h4>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Nossa equipe analisa cada solicitação individualmente e retorna em até{" "}
+                A nossa equipa analisa cada pedido individualmente e responde em até{" "}
                 <span className="font-semibold text-foreground">24 horas úteis</span> com uma proposta personalizada.
               </p>
             </div>

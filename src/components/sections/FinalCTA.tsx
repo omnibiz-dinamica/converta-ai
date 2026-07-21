@@ -1,17 +1,16 @@
 import { wa } from "@/lib/contact";
 
-const URL = wa("Quero falar com um especialista agora!");
+const URL = wa("Quero falar com um especialista.");
 
 export function FinalCTA() {
   return (
     <section id="cta-final" className="relative overflow-hidden bg-gradient-hero py-24 sm:py-32">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-6xl">
-          Pronto para parar de <span className="text-gradient-accent">perder clientes?</span>
+          Pronto para reduzir tarefas manuais e <span className="text-gradient-accent">responder melhor?</span>
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground sm:text-xl">
-          Comece agora e transforme seu atendimento em uma{" "}
-          <span className="font-semibold text-foreground">máquina de vendas</span>.
+          Fale connosco e perceba que processos podem ser automatizados na sua empresa.
         </p>
         <a
           href={URL}
@@ -19,10 +18,10 @@ export function FinalCTA() {
           rel="noopener noreferrer"
           className="mt-10 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-primary px-9 py-5 text-lg font-bold text-primary-foreground shadow-glow-primary transition-bounce hover:scale-[1.05] animate-pulse-glow"
         >
-          👉 Falar com especialista agora
+          👉 Falar com especialista
         </a>
         <p className="mt-5 text-sm text-muted-foreground">
-          Resposta em poucos minutos · Atendimento humano
+          Atendimento humano · Diagnóstico inicial
         </p>
       </div>
     </section>

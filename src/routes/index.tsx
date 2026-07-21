@@ -24,17 +24,17 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Dinâmica Solução — Tecnologia Inteligente, IA e Automação" },
+      { title: "Dinâmica Solução | Automação, IA e Desenvolvimento de Sistemas" },
       {
         name: "description",
         content:
-          "Desenvolvimento sob medida, automação de processos (RPA), sites e agentes de IA 24/7 no WhatsApp e Instagram. +30 projetos entregues.",
+          "Automatize o atendimento, reduza tarefas manuais e aumente as vendas com agentes de IA, sistemas personalizados e automação de processos.",
       },
-      { property: "og:title", content: "Dinâmica Solução — Automação, IA e Tecnologia" },
+      { property: "og:title", content: "Dinâmica Solução | Automação, IA e Desenvolvimento de Sistemas" },
       {
         property: "og:description",
         content:
-          "Sistemas, automação e agentes de IA que respondem em segundos e vendem 24/7.",
+          "Agentes de IA, sistemas personalizados e automação de processos para pequenas e médias empresas.",
       },
       { property: "og:url", content: "https://www.dinamicasolucao.com/" },
     ],

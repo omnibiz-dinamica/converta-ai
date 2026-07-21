@@ -2,25 +2,25 @@ const services = [
   {
     icon: "💻",
     title: "Desenvolvimento de Sistemas",
-    desc: "Sistemas customizados do briefing ao deploy, com arquitetura robusta e interfaces intuitivas que se adaptam ao seu fluxo de trabalho.",
+    desc: "Sistemas personalizados do briefing ao deploy, com arquitetura robusta e interfaces intuitivas que se adaptam ao seu fluxo de trabalho.",
     tags: ["React", "Node.js", "PostgreSQL"],
   },
   {
     icon: "⚙️",
     title: "Automação de Processos (RPA)",
-    desc: "Reduza tarefas repetitivas, minimize erros humanos e libere sua equipe para o que realmente importa com automação inteligente.",
+    desc: "Reduza tarefas repetitivas, minimize erros humanos e liberte a sua equipa para o que realmente importa com automação inteligente.",
     tags: ["RPA", "Python", "APIs"],
   },
   {
     icon: "🌐",
     title: "Sites e Plataformas Web",
-    desc: "Sites modernos, rápidos e otimizados para conversão, com design responsivo e experiência do usuário excepcional.",
+    desc: "Sites modernos, rápidos e otimizados para conversão, com design responsivo e uma experiência clara para o utilizador.",
     tags: ["Next.js", "SEO", "UX"],
   },
   {
     icon: "🎓",
     title: "Consultoria Tech",
-    desc: "Diagnóstico completo da sua operação e planejamento estratégico de tecnologia para potencializar seus resultados.",
+    desc: "Diagnóstico completo da sua operação e planeamento estratégico de tecnologia para melhorar os seus resultados.",
     tags: ["Estratégia", "Roadmap", "ROI"],
   },
 ];
@@ -34,11 +34,11 @@ export function ServicesSection() {
             Serviços
           </span>
           <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-            Soluções completas para sua{" "}
+            Soluções completas para a sua{" "}
             <span className="text-gradient">transformação digital</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Da estratégia à execução, oferecemos tudo o que sua empresa precisa para evoluir com
+            Da estratégia à execução, oferecemos tecnologia prática para a sua empresa evoluir com
             tecnologia.
           </p>
         </div>

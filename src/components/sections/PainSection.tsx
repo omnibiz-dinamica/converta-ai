@@ -1,9 +1,9 @@
 const pains = [
-  { icon: "⏳", text: "Demora para responder seus clientes" },
+  { icon: "⏳", text: "Demora a responder aos seus clientes" },
   { icon: "📵", text: "Não atende fora do horário comercial" },
   { icon: "🤯", text: "Depende de processos manuais" },
   { icon: "📉", text: "Perde leads por falta de acompanhamento" },
-  { icon: "💸", text: "Tem equipe sobrecarregada com tarefas repetitivas" },
+  { icon: "💸", text: "Tem a equipa sobrecarregada com tarefas repetitivas" },
 ];
 
 export function PainSection() {
@@ -15,7 +15,7 @@ export function PainSection() {
             O problema
           </span>
           <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
-            Você está perdendo dinheiro <br className="hidden sm:block" />
+            A sua empresa pode estar a perder oportunidades <br className="hidden sm:block" />
             <span className="text-gradient-accent">todos os dias se:</span>
           </h2>
         </div>
@@ -40,8 +40,8 @@ export function PainSection() {
             className="absolute inset-0 -z-10 bg-gradient-to-br from-accent/10 via-transparent to-primary/10"
           />
           <p className="font-display text-2xl font-bold leading-tight text-foreground sm:text-4xl">
-            "Cada mensagem não respondida é uma{" "}
-            <span className="text-gradient-accent">venda perdida.</span>"
+            "Cada mensagem sem resposta pode ser uma{" "}
+            <span className="text-gradient-accent">oportunidade perdida.</span>"
           </p>
         </div>
       </div>

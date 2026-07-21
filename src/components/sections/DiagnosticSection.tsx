@@ -31,16 +31,16 @@ export function DiagnosticSection() {
               Receba um diagnóstico gratuito do seu atendimento
             </h2>
             <p className="mt-5 text-lg text-primary-foreground/80">
-              Vamos analisar seu processo atual e mostrar exatamente onde você está perdendo
-              clientes — e como resolver.
+              Vamos analisar o seu processo atual e identificar oportunidades de melhoria no
+              atendimento e na operação.
             </p>
             <a
-              href={wa("Quero meu diagnóstico gratuito de atendimento.")}
+              href={wa("Quero o meu diagnóstico gratuito de atendimento.")}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-background px-8 py-4 text-base font-bold text-foreground shadow-elegant transition-bounce hover:scale-[1.04]"
             >
-              👉 Quero meu diagnóstico gratuito
+              👉 Quero o meu diagnóstico gratuito
             </a>
           </div>
         </div>

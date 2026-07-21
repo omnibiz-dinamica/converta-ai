@@ -23,7 +23,7 @@ const projects = [
   {
     category: "Inteligência Artificial",
     title: "Agente IA para Atendimento",
-    desc: "Chatbot inteligente integrado ao WhatsApp e Instagram com qualificação automática de leads e atendimento 24/7.",
+    desc: "Chatbot inteligente integrado ao WhatsApp e Instagram com qualificação automática de leads e disponibilidade ampliada.",
     tags: ["IA", "WhatsApp API", "NLP"],
     accent: "accent" as const,
   },

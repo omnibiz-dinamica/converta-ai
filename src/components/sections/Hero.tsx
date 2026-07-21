@@ -28,11 +28,11 @@ export function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
               </span>
-              Tecnologia Inteligente para seu negócio
+              Tecnologia inteligente para a sua empresa
             </div>
 
             <h1 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-              Automatize seu atendimento e{" "}
+              Automatize o seu atendimento e{" "}
               <span className="text-gradient-accent">pare de perder clientes</span> todos os dias
             </h1>
 
@@ -43,18 +43,18 @@ export function Hero() {
 
             <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:gap-4 lg:items-start lg:justify-start justify-center">
               <a
-                href={wa("Olá! Quero automatizar meu atendimento.")}
+                href={wa("Olá! Quero automatizar o meu atendimento.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-glow-primary transition-bounce hover:scale-[1.03]"
               >
-                👉 Quero automatizar meu atendimento
+                👉 Quero automatizar o meu atendimento
               </a>
               <a
                 href="#servicos"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card/60 px-7 py-4 text-base font-semibold text-foreground backdrop-blur transition-smooth hover:border-primary/50 hover:bg-card"
               >
-                💬 Conhecer Serviços
+                💬 Conhecer serviços
               </a>
             </div>
 
@@ -64,16 +64,16 @@ export function Hero() {
                 <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
                   <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                 </svg>
-                Satisfação 100%
+                Soluções à medida
               </div>
               <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-sm font-medium text-accent">
                 <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
                   <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" />
                 </svg>
-                +30 Projetos entregues
+                Projetos digitais entregues
               </div>
               <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-2 text-sm font-medium text-muted-foreground">
-                ⭐⭐⭐⭐⭐ <span className="text-foreground">+3 anos de experiência</span>
+                ⭐⭐⭐⭐⭐ <span className="text-foreground">Experiência em PME</span>
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@ export function Hero() {
                     Olá! Vocês entregam em Lisboa hoje?
                   </div>
                   <div className="ml-auto max-w-[85%] rounded-2xl rounded-tr-sm bg-gradient-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-glow-primary">
-                    Olá 👋 Sim! Posso reservar agora para entrega ainda hoje. Confirma o CEP?
+                    Olá 👋 Sim! Posso reservar agora para entrega ainda hoje. Confirma o Código Postal?
                   </div>
                   <div className="flex items-center gap-2 text-xs text-muted-foreground">
                     <span className="relative flex h-2 w-2">
@@ -131,7 +131,7 @@ export function Hero() {
 
                 {/* Selo flutuante */}
                 <div className="absolute -right-3 -top-3 rotate-3 rounded-2xl border border-accent/40 bg-gradient-accent px-3 py-2 text-xs font-bold text-accent-foreground shadow-glow-accent animate-float">
-                  24/7 ativo
+                  Atendimento contínuo
                 </div>
               </div>
             </div>

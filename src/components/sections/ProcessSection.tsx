@@ -2,12 +2,12 @@ const steps = [
   {
     n: "01",
     title: "Diagnóstico",
-    desc: "Entendemos seu negócio, desafios e oportunidades para identificar a melhor solução tecnológica.",
+    desc: "Entendemos a sua empresa, desafios e oportunidades para identificar a melhor solução tecnológica.",
   },
   {
     n: "02",
     title: "Planejamento",
-    desc: "Definimos arquitetura, cronograma e escopo detalhado, alinhando expectativas e prioridades.",
+    desc: "Definimos arquitetura, cronograma e âmbito detalhado, alinhando expectativas e prioridades.",
   },
   {
     n: "03",
@@ -17,7 +17,7 @@ const steps = [
   {
     n: "04",
     title: "Evolução",
-    desc: "Suporte contínuo, melhorias e evolução para acompanhar o crescimento do seu negócio.",
+    desc: "Suporte contínuo, melhorias e evolução para acompanhar o crescimento da sua empresa.",
   },
 ];
 
@@ -33,7 +33,7 @@ export function ProcessSection() {
             Como <span className="text-gradient-accent">trabalhamos</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Um processo claro e colaborativo do primeiro contato à entrega — e além.
+            Um processo claro e colaborativo do primeiro contacto à entrega — e além.
           </p>
         </div>
 

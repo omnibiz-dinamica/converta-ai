@@ -1,15 +1,15 @@
 const features = [
-  "Projetos 100% personalizados",
+  "Projetos personalizados",
   "Foco em usabilidade, eficiência e escalabilidade",
   "Parceria de longo prazo",
   "Tecnologia como vantagem competitiva",
 ];
 
 const metrics = [
-  { value: "+3 anos", label: "de experiência" },
-  { value: "+30", label: "projetos entregues" },
-  { value: "100%", label: "sob medida" },
-  { value: "24/7", label: "suporte ativo" },
+  { value: "PME", label: "como foco" },
+  { value: "IA", label: "aplicada a processos" },
+  { value: "Sob", label: "medida" },
+  { value: "360º", label: "da ideia ao suporte" },
 ];
 
 export function AboutSection() {
@@ -27,7 +27,7 @@ export function AboutSection() {
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
               Na Dinâmica Solução, acreditamos que tecnologia de verdade nasce da compreensão
-              profunda do negócio de cada cliente. Não entregamos soluções genéricas —{" "}
+              profunda da empresa de cada cliente. Não entregamos soluções genéricas —{" "}
               <span className="text-foreground font-semibold">
                 construímos ferramentas sob medida
               </span>{" "}
