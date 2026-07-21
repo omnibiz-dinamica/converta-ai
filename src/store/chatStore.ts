@@ -17,7 +17,7 @@ const seed: ChatMessage[] = [
     id: "welcome",
     role: "assistant",
     content:
-      "👋 Olá! Sou o assistente da Dinâmica Solução. Posso explicar serviços, preços ou ligá-lo a um especialista. Como posso ajudar?",
+      "👋 Olá! Sou o assistente informativo da Dinâmica Solução. Posso explicar serviços, preços ou encaminhar para contacto humano. Como posso ajudar?",
     createdAt: Date.now(),
   },
 ];

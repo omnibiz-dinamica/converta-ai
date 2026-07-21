@@ -76,7 +76,7 @@ export function ChatWidget() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-foreground">{t("chat.title")}</p>
-                  <p className="text-xs text-primary">● Online · IA</p>
+                  <p className="text-xs text-primary">● Assistente informativo</p>
                 </div>
               </div>
               <button
@@ -90,6 +90,10 @@ export function ChatWidget() {
 
             {/* Messages */}
             <div ref={listRef} className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
+              <div className="rounded-2xl border border-border bg-background/60 px-4 py-3 text-xs leading-relaxed text-muted-foreground">
+                Este chat ajuda a orientar o pedido. Integrações reais com IA, CRM ou WhatsApp são
+                configuradas apenas em projectos aprovados.
+              </div>
               {messages.map((m) => (
                 <div
                   key={m.id}
