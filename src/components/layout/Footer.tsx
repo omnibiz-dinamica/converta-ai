@@ -22,9 +22,12 @@ export function Footer() {
               {[
                 ["Sobre", "#sobre"],
                 ["Serviços", "#servicos"],
+                ["Casos de uso", "#casos-uso"],
                 ["Agentes IA", "#agentes-ia"],
+                ["Preços", "#precos"],
                 ["Portfólio", "#portfolio"],
                 ["Processo", "#processo"],
+                ["Perguntas", "#perguntas"],
                 ["Contacto", "#contato"],
               ].map(([label, href]) => (
                 <li key={href}>

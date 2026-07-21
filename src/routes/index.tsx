@@ -8,6 +8,8 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { PainSection } from "@/components/sections/PainSection";
 import { SolutionSection } from "@/components/sections/SolutionSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
+import { SolutionDemoSection } from "@/components/sections/SolutionDemoSection";
+import { UseCasesSection } from "@/components/sections/UseCasesSection";
 import { AgentsSection } from "@/components/sections/AgentsSection";
 import { ResultsSection } from "@/components/sections/ResultsSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
@@ -15,6 +17,7 @@ import { ProcessSection } from "@/components/sections/ProcessSection";
 import { OfferSection } from "@/components/sections/OfferSection";
 import { DiagnosticSection } from "@/components/sections/DiagnosticSection";
 import { PricingSection } from "@/components/sections/PricingSection";
+import { FAQSection } from "@/components/sections/FAQSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { ChatWidget } from "@/components/chat/ChatWidget";
@@ -61,8 +64,10 @@ function Index() {
         <Hero />
         <PainSection />
         <SolutionSection />
+        <SolutionDemoSection />
         <AboutSection />
         <ServicesSection />
+        <UseCasesSection />
         <AgentsSection />
         <ResultsSection />
         <PortfolioSection />
@@ -70,6 +75,7 @@ function Index() {
         <OfferSection />
         <DiagnosticSection />
         <PricingSection />
+        <FAQSection />
         <ContactSection />
         <FinalCTA />
       </main>

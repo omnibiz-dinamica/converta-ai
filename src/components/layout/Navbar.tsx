@@ -4,6 +4,7 @@ import { Logo } from "./Logo";
 const links = [
   { label: "Sobre", href: "#sobre" },
   { label: "Serviços", href: "#servicos" },
+  { label: "Casos", href: "#casos-uso" },
   { label: "Agentes IA", href: "#agentes-ia" },
   { label: "Preços", href: "#precos" },
   { label: "Portfólio", href: "#portfolio" },
@@ -35,7 +36,7 @@ export function Navbar() {
           <Logo />
         </a>
 
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav className="hidden items-center gap-5 xl:gap-7 lg:flex">
           {links.map((l) => (
             <a
               key={l.href}
