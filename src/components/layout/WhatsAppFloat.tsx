@@ -1,6 +1,6 @@
 import { wa } from "@/lib/contact";
 
-const URL = wa("Olá! Quero automatizar meu atendimento com IA.");
+const URL = wa("Olá! Quero automatizar o meu atendimento com IA.");
 
 export function WhatsAppFloat() {
   return (
