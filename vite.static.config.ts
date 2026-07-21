@@ -14,5 +14,15 @@ export default defineConfig({
   build: {
     outDir: "dist",
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ["react", "react-dom"],
+          motion: ["framer-motion"],
+          forms: ["react-hook-form", "@hookform/resolvers", "zod"],
+          ui: ["@radix-ui/react-slot", "class-variance-authority", "clsx", "tailwind-merge"],
+        },
+      },
+    },
   },
 });
