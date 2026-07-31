@@ -1,3 +1,8 @@
+import projectGestao from "@/assets/project-gestao.jpg";
+import projectAutomacao from "@/assets/project-automacao.jpg";
+import projectWeb from "@/assets/project-web.jpg";
+import projectAgenteIA from "@/assets/project-agente-ia.jpg";
+
 const projects = [
   {
     category: "Modelo de projecto",
@@ -5,6 +10,8 @@ const projects = [
     desc: "Plataforma para organizar operações, equipa, tarefas e indicadores num único ambiente ajustado ao processo da empresa.",
     tags: ["React", "Node.js", "PostgreSQL"],
     accent: "primary" as const,
+    image: projectGestao,
+    alt: "Dashboard de sistema de gestão interna exibido num portátil sobre secretária minimalista",
   },
   {
     category: "Modelo de automação",
@@ -12,6 +19,8 @@ const projects = [
     desc: "Fluxos para reduzir tarefas repetitivas, organizar documentos e apoiar equipas com validações mais consistentes.",
     tags: ["RPA", "Python", "APIs"],
     accent: "accent" as const,
+    image: projectAutomacao,
+    alt: "Diagrama de automação com formulários, documentos e e-mails a passarem por validação automática",
   },
   {
     category: "Modelo web",
@@ -19,6 +28,8 @@ const projects = [
     desc: "Experiência digital com páginas claras, formulário de contacto, integração com WhatsApp e base preparada para SEO.",
     tags: ["Next.js", "Stripe", "AWS"],
     accent: "primary" as const,
+    image: projectWeb,
+    alt: "Site comercial responsivo apresentado em portátil e telemóvel",
   },
   {
     category: "Modelo IA",
@@ -26,8 +37,11 @@ const projects = [
     desc: "Exemplo de agente para responder dúvidas frequentes, recolher dados, qualificar pedidos e encaminhar para atendimento humano.",
     tags: ["IA", "WhatsApp API", "NLP"],
     accent: "accent" as const,
+    image: projectAgenteIA,
+    alt: "Robô de inteligência artificial rodeado de balões de conversa a representar atendimento automatizado",
   },
 ];
+
 
 export function PortfolioSection() {
   return (
