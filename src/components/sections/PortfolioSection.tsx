@@ -1,3 +1,8 @@
+import projectGestao from "@/assets/project-gestao.jpg";
+import projectAutomacao from "@/assets/project-automacao.jpg";
+import projectWeb from "@/assets/project-web.jpg";
+import projectAgenteIA from "@/assets/project-agente-ia.jpg";
+
 const projects = [
   {
     category: "Modelo de projecto",
@@ -5,6 +10,8 @@ const projects = [
     desc: "Plataforma para organizar operações, equipa, tarefas e indicadores num único ambiente ajustado ao processo da empresa.",
     tags: ["React", "Node.js", "PostgreSQL"],
     accent: "primary" as const,
+    image: projectGestao,
+    alt: "Dashboard de sistema de gestão interna exibido num portátil sobre secretária minimalista",
   },
   {
     category: "Modelo de automação",
@@ -12,6 +19,8 @@ const projects = [
     desc: "Fluxos para reduzir tarefas repetitivas, organizar documentos e apoiar equipas com validações mais consistentes.",
     tags: ["RPA", "Python", "APIs"],
     accent: "accent" as const,
+    image: projectAutomacao,
+    alt: "Diagrama de automação com formulários, documentos e e-mails a passarem por validação automática",
   },
   {
     category: "Modelo web",
@@ -19,6 +28,8 @@ const projects = [
     desc: "Experiência digital com páginas claras, formulário de contacto, integração com WhatsApp e base preparada para SEO.",
     tags: ["Next.js", "Stripe", "AWS"],
     accent: "primary" as const,
+    image: projectWeb,
+    alt: "Site comercial responsivo apresentado em portátil e telemóvel",
   },
   {
     category: "Modelo IA",
@@ -26,8 +37,11 @@ const projects = [
     desc: "Exemplo de agente para responder dúvidas frequentes, recolher dados, qualificar pedidos e encaminhar para atendimento humano.",
     tags: ["IA", "WhatsApp API", "NLP"],
     accent: "accent" as const,
+    image: projectAgenteIA,
+    alt: "Robô de inteligência artificial rodeado de balões de conversa a representar atendimento automatizado",
   },
 ];
+
 
 export function PortfolioSection() {
   return (
@@ -52,31 +66,30 @@ export function PortfolioSection() {
               key={p.title}
               className="group relative overflow-hidden rounded-3xl border border-border bg-gradient-card shadow-card transition-smooth hover:-translate-y-1 hover:border-primary/40 hover:shadow-elegant"
             >
-              {/* "imagem" stylized header */}
-              <div
-                className={`relative h-44 overflow-hidden ${
-                  p.accent === "primary" ? "bg-gradient-primary" : "bg-gradient-accent"
-                }`}
-              >
-                <div
-                  aria-hidden
-                  className="absolute inset-0 opacity-30"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to right, rgba(0,0,0,0.2) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.2) 1px, transparent 1px)",
-                    backgroundSize: "24px 24px",
-                  }}
+              <div className="relative aspect-[3/2] overflow-hidden">
+                <img
+                  src={p.image}
+                  alt={p.alt}
+                  width={1200}
+                  height={800}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-smooth group-hover:scale-105"
                 />
                 <div
                   aria-hidden
-                  className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-background/20 blur-2xl"
+                  className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent"
                 />
-                <div className="relative flex h-full items-end p-6">
-                  <span className="rounded-full bg-background/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground backdrop-blur-sm">
+                <div className="absolute inset-x-0 bottom-0 flex items-end p-6">
+                  <span
+                    className={`rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground backdrop-blur-sm ${
+                      p.accent === "primary" ? "bg-gradient-primary" : "bg-gradient-accent"
+                    }`}
+                  >
                     {p.category}
                   </span>
                 </div>
               </div>
+
 
               <div className="p-7">
                 <h3 className="font-display text-xl font-bold text-foreground sm:text-2xl">
