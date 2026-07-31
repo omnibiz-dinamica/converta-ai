@@ -66,31 +66,30 @@ export function PortfolioSection() {
               key={p.title}
               className="group relative overflow-hidden rounded-3xl border border-border bg-gradient-card shadow-card transition-smooth hover:-translate-y-1 hover:border-primary/40 hover:shadow-elegant"
             >
-              {/* "imagem" stylized header */}
-              <div
-                className={`relative h-44 overflow-hidden ${
-                  p.accent === "primary" ? "bg-gradient-primary" : "bg-gradient-accent"
-                }`}
-              >
-                <div
-                  aria-hidden
-                  className="absolute inset-0 opacity-30"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to right, rgba(0,0,0,0.2) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.2) 1px, transparent 1px)",
-                    backgroundSize: "24px 24px",
-                  }}
+              <div className="relative aspect-[3/2] overflow-hidden">
+                <img
+                  src={p.image}
+                  alt={p.alt}
+                  width={1200}
+                  height={800}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-smooth group-hover:scale-105"
                 />
                 <div
                   aria-hidden
-                  className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-background/20 blur-2xl"
+                  className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent"
                 />
-                <div className="relative flex h-full items-end p-6">
-                  <span className="rounded-full bg-background/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground backdrop-blur-sm">
+                <div className="absolute inset-x-0 bottom-0 flex items-end p-6">
+                  <span
+                    className={`rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground backdrop-blur-sm ${
+                      p.accent === "primary" ? "bg-gradient-primary" : "bg-gradient-accent"
+                    }`}
+                  >
                     {p.category}
                   </span>
                 </div>
               </div>
+
 
               <div className="p-7">
                 <h3 className="font-display text-xl font-bold text-foreground sm:text-2xl">
