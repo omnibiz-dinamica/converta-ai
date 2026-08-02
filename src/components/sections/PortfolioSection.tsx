@@ -42,7 +42,6 @@ const projects = [
   },
 ];
 
-
 export function PortfolioSection() {
   return (
     <section id="portfolio" className="relative bg-surface-elevated/40 py-24 sm:py-32">
@@ -89,7 +88,6 @@ export function PortfolioSection() {
                   </span>
                 </div>
               </div>
-
 
               <div className="p-7">
                 <h3 className="font-display text-xl font-bold text-foreground sm:text-2xl">
