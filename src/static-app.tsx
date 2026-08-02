@@ -16,6 +16,7 @@ import { ProcessSection } from "@/components/sections/ProcessSection";
 import { ResultsSection } from "@/components/sections/ResultsSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { SolutionSection } from "@/components/sections/SolutionSection";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { PricingSection } from "@/components/sections/PricingSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { SolutionDemoSection } from "@/components/sections/SolutionDemoSection";
@@ -36,6 +37,7 @@ export function StaticApp() {
         <UseCasesSection />
         <AgentsSection />
         <ResultsSection />
+        <TestimonialsSection />
         <PortfolioSection />
         <ProcessSection />
         <OfferSection />

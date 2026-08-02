@@ -12,6 +12,7 @@ import { SolutionDemoSection } from "@/components/sections/SolutionDemoSection";
 import { UseCasesSection } from "@/components/sections/UseCasesSection";
 import { AgentsSection } from "@/components/sections/AgentsSection";
 import { ResultsSection } from "@/components/sections/ResultsSection";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { OfferSection } from "@/components/sections/OfferSection";
@@ -73,6 +74,7 @@ function Index() {
         <UseCasesSection />
         <AgentsSection />
         <ResultsSection />
+        <TestimonialsSection />
         <PortfolioSection />
         <ProcessSection />
         <OfferSection />

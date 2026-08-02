@@ -24,6 +24,7 @@ export function Footer() {
                 ["Serviços", "#servicos"],
                 ["Casos de uso", "#casos-uso"],
                 ["Agentes IA", "#agentes-ia"],
+                ["Depoimentos", "#depoimentos"],
                 ["Preços", "#precos"],
                 ["Portfólio", "#portfolio"],
                 ["Processo", "#processo"],
