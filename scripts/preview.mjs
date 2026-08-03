@@ -29,20 +29,37 @@ const types = new Map([
 ]);
 
 if (!existsSync(indexFile)) {
-  console.error("dist/index.html não encontrado. Execute `npm run build:static` antes do preview.");
+  console.error(
+    "dist/index.html não encontrado. Execute `npm run preview:fresh` para gerar e abrir o site.",
+  );
   process.exit(1);
 }
 
-const sendFile = (res, filePath) => {
+const sendFile = (req, res, filePath) => {
   res.writeHead(200, {
     "Content-Type": types.get(extname(filePath).toLowerCase()) || "application/octet-stream",
   });
+
+  if (req.method === "HEAD") {
+    res.end();
+    return;
+  }
+
   createReadStream(filePath).pipe(res);
 };
 
 const server = createServer((req, res) => {
   const rawUrl = req.url?.split("?")[0] || "/";
-  const decodedPath = decodeURIComponent(rawUrl);
+  let decodedPath = "/";
+
+  try {
+    decodedPath = decodeURIComponent(rawUrl);
+  } catch {
+    res.writeHead(400);
+    res.end("Bad request");
+    return;
+  }
+
   const requestedPath = normalize(join(distDir, decodedPath));
   const insideDist = requestedPath === distDir || requestedPath.startsWith(distDir + sep);
 
@@ -53,13 +70,23 @@ const server = createServer((req, res) => {
   }
 
   if (existsSync(requestedPath) && statSync(requestedPath).isFile()) {
-    sendFile(res, requestedPath);
+    sendFile(req, res, requestedPath);
     return;
   }
 
-  sendFile(res, indexFile);
+  sendFile(req, res, indexFile);
 });
 
 server.listen(port, host, () => {
   console.log(`Preview disponível em http://${host}:${port}/`);
+});
+
+server.on("error", (error) => {
+  if (error.code === "EADDRINUSE") {
+    console.error(`A porta ${port} já está em uso. Tente: npm run preview -- --port 4174`);
+    process.exit(1);
+  }
+
+  console.error(error.message);
+  process.exit(1);
 });
