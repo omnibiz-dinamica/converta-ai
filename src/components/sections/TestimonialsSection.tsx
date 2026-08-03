@@ -84,23 +84,24 @@ export function TestimonialsSection() {
                 <img
                   src={item.image}
                   alt={`${item.name}, ${item.role}`}
-                  className="h-full w-full object-cover transition-smooth group-hover:scale-105"
+                  className="h-full w-full object-cover object-top transition-smooth group-hover:scale-105"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-                <div
-                  className={`absolute left-5 top-5 rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-wider backdrop-blur ${
-                    item.accent === "primary"
-                      ? "border-primary/40 bg-primary/15 text-primary"
-                      : "border-accent/40 bg-accent/15 text-accent"
-                  }`}
-                >
-                  {item.category}
-                </div>
               </div>
 
               <div className="flex flex-1 flex-col p-6">
-                <div className="flex items-center justify-between gap-4">
+                <span
+                  className={`inline-flex w-fit max-w-full rounded-full border px-3 py-1 text-[11px] font-bold uppercase leading-tight tracking-wider ${
+                    item.accent === "primary"
+                      ? "border-primary/40 bg-primary/10 text-primary"
+                      : "border-accent/40 bg-accent/10 text-accent"
+                  }`}
+                >
+                  {item.category}
+                </span>
+
+                <div className="mt-5 flex items-center justify-between gap-4">
                   <div className="flex gap-1 text-primary">
                     {Array.from({ length: 5 }).map((_, index) => (
                       <Star key={index} className="h-4 w-4 fill-current" />
