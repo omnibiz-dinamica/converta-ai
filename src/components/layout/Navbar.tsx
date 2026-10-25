@@ -78,18 +78,15 @@ function SystemMenu({ active }: { active: boolean }) {
       </button>
 
       {open && (
-        <div className="absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3">
+        <div className="absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 pt-3">
           <div className="rounded-2xl border border-border bg-card p-2 shadow-elegant">
             <a
-              href={SUITE_PATH}
+              href={`${SUITE_PATH}#manuais`}
               onClick={() => setOpen(false)}
               aria-current={active ? "page" : undefined}
               className="block rounded-xl px-3 py-3 transition-smooth hover:bg-secondary"
             >
               <span className="block text-sm font-semibold text-foreground">OmniBiz Suite</span>
-              <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">
-                Tarefas, clientes, ponto e RH num só sistema, com manuais de utilização.
-              </span>
             </a>
           </div>
         </div>
@@ -203,7 +200,7 @@ export function Navbar({ home = true, activeSystem = false }: NavbarProps) {
                 Sistema
               </span>
               <a
-                href={SUITE_PATH}
+                href={`${SUITE_PATH}#manuais`}
                 onClick={() => setOpen(false)}
                 aria-current={activeSystem ? "page" : undefined}
                 className={`mt-1 block rounded-md border-l-2 border-primary/50 py-2.5 pl-3 text-sm font-semibold transition-smooth hover:bg-secondary ${
