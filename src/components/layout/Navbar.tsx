@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { SUITE_PATH } from "@/lib/pages";
 import { Logo } from "./Logo";
 
 const links = [
@@ -13,9 +14,96 @@ const links = [
   { label: "Contacto", href: "#contato" },
 ];
 
-export function Navbar() {
+// O menu "Sistema" aparece logo a seguir a "Serviços".
+const SYSTEM_MENU_AFTER = 2;
+
+type NavbarProps = {
+  /** `true` na página inicial (âncoras `#...`); `false` nas outras páginas (`/#...`). */
+  home?: boolean;
+  /** Destaca o menu "Sistema" quando a página atual pertence a ele. */
+  activeSystem?: boolean;
+};
+
+function SystemMenu({ active }: { active: boolean }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  return (
+    <div
+      ref={ref}
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        type="button"
+        aria-haspopup="true"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+        className={`inline-flex items-center gap-1 text-sm font-medium transition-smooth hover:text-foreground ${
+          active || open ? "text-foreground" : "text-muted-foreground"
+        }`}
+      >
+        Sistema
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden
+          className={`h-3.5 w-3.5 transition-smooth ${open ? "rotate-180" : ""}`}
+        >
+          <path
+            d="M6 9l6 6 6-6"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+
+      {open && (
+        <div className="absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3">
+          <div className="rounded-2xl border border-border bg-card p-2 shadow-elegant">
+            <a
+              href={SUITE_PATH}
+              onClick={() => setOpen(false)}
+              aria-current={active ? "page" : undefined}
+              className="block rounded-xl px-3 py-3 transition-smooth hover:bg-secondary"
+            >
+              <span className="block text-sm font-semibold text-foreground">OmniBiz Suite</span>
+              <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">
+                Tarefas, clientes, ponto e RH num só sistema, com manuais de utilização.
+              </span>
+            </a>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function Navbar({ home = true, activeSystem = false }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  // Fora da página inicial, as âncoras precisam do prefixo "/".
+  const to = (hash: string) => (home ? hash : `/${hash}`);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -24,26 +112,34 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const linkClass =
+    "text-sm font-medium text-muted-foreground transition-smooth hover:text-foreground";
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-smooth ${
-        scrolled
+        scrolled || !home
           ? "border-b border-border/60 bg-background/80 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="#top" className="transition-smooth hover:opacity-80">
+        <a href={home ? "#top" : "/"} className="transition-smooth hover:opacity-80">
           <Logo />
         </a>
 
-        <nav className="hidden items-center gap-5 xl:gap-7 lg:flex">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm font-medium text-muted-foreground transition-smooth hover:text-foreground"
-            >
+        <nav
+          className="hidden whitespace-nowrap items-center gap-4 xl:gap-7 lg:flex"
+          aria-label="Principal"
+        >
+          {links.slice(0, SYSTEM_MENU_AFTER).map((l) => (
+            <a key={l.href} href={to(l.href)} className={linkClass}>
+              {l.label}
+            </a>
+          ))}
+          <SystemMenu active={activeSystem} />
+          {links.slice(SYSTEM_MENU_AFTER).map((l) => (
+            <a key={l.href} href={to(l.href)} className={linkClass}>
               {l.label}
             </a>
           ))}
@@ -51,7 +147,7 @@ export function Navbar() {
 
         <div className="hidden lg:block">
           <a
-            href="#contato"
+            href={to("#contato")}
             className="inline-flex items-center justify-center rounded-full bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow-primary transition-bounce hover:scale-[1.03]"
           >
             Solicitar Orçamento
@@ -61,6 +157,7 @@ export function Navbar() {
         <button
           type="button"
           aria-label="Abrir menu"
+          aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
           className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground lg:hidden"
         >
@@ -85,12 +182,42 @@ export function Navbar() {
       </div>
 
       {open && (
-        <div className="border-t border-border bg-background/95 backdrop-blur-xl lg:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6">
-            {links.map((l) => (
+        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-border bg-background/95 backdrop-blur-xl lg:hidden">
+          <nav
+            className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6"
+            aria-label="Principal (telemóvel)"
+          >
+            {links.slice(0, SYSTEM_MENU_AFTER).map((l) => (
               <a
                 key={l.href}
-                href={l.href}
+                href={to(l.href)}
+                onClick={() => setOpen(false)}
+                className="rounded-md px-3 py-3 text-sm font-medium text-muted-foreground transition-smooth hover:bg-secondary hover:text-foreground"
+              >
+                {l.label}
+              </a>
+            ))}
+
+            <div className="rounded-md px-3 pt-3">
+              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Sistema
+              </span>
+              <a
+                href={SUITE_PATH}
+                onClick={() => setOpen(false)}
+                aria-current={activeSystem ? "page" : undefined}
+                className={`mt-1 block rounded-md border-l-2 border-primary/50 py-2.5 pl-3 text-sm font-semibold transition-smooth hover:bg-secondary ${
+                  activeSystem ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                OmniBiz Suite
+              </a>
+            </div>
+
+            {links.slice(SYSTEM_MENU_AFTER).map((l) => (
+              <a
+                key={l.href}
+                href={to(l.href)}
                 onClick={() => setOpen(false)}
                 className="rounded-md px-3 py-3 text-sm font-medium text-muted-foreground transition-smooth hover:bg-secondary hover:text-foreground"
               >
@@ -98,7 +225,7 @@ export function Navbar() {
               </a>
             ))}
             <a
-              href="#contato"
+              href={to("#contato")}
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center justify-center rounded-full bg-gradient-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-glow-primary"
             >

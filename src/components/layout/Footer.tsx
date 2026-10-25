@@ -1,7 +1,15 @@
 import { EMAIL, LINKEDIN, PHONE_DISPLAY, SITE, wa } from "@/lib/contact";
+import { SUITE_PATH } from "@/lib/pages";
 import { Logo } from "./Logo";
 
-export function Footer() {
+type FooterProps = {
+  /** `false` fora da página inicial: as âncoras passam a `/#...`. */
+  home?: boolean;
+};
+
+export function Footer({ home = true }: FooterProps) {
+  const to = (hash: string) => (home ? hash : `/${hash}`);
+
   return (
     <footer className="border-t border-border bg-surface-elevated/40">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
@@ -22,6 +30,8 @@ export function Footer() {
               {[
                 ["Sobre", "#sobre"],
                 ["Serviços", "#servicos"],
+                ["OmniBiz Suite", SUITE_PATH],
+                ["Manuais", `${SUITE_PATH}#manuais`],
                 ["Casos de uso", "#casos-uso"],
                 ["Agentes IA", "#agentes-ia"],
                 ["Depoimentos", "#depoimentos"],
@@ -33,7 +43,7 @@ export function Footer() {
               ].map(([label, href]) => (
                 <li key={href}>
                   <a
-                    href={href}
+                    href={href.startsWith("#") ? to(href) : href}
                     className="text-muted-foreground transition-smooth hover:text-primary"
                   >
                     {label}

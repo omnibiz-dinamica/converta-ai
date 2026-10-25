@@ -1,0 +1,242 @@
+<header class="intro">
+  <div class="eyebrow">OmniBiz · Guia para gestores</div>
+  <h1>Cadastro de clientes</h1>
+  <p>A ficha do cliente guarda os contactos, a morada, os horários habituais, a forma de cobrança e a equipa que o atende. Com a ficha bem preenchida, as tarefas novas já vêm com o horário e os funcionários sugeridos.</p>
+  <div class="flow" aria-label="Partes da ficha">
+    <span>Dados cadastrais</span><span>Geolocalização</span><span>Horários &amp; programação</span><span>Cobrança</span><span>Equipa responsável</span>
+  </div>
+</header>
+
+<section class="step" aria-labelledby="c1">
+  <div class="step-text">
+    <h2 id="c1"><span class="num">1</span>Abrir a lista de clientes</h2>
+    <ol>
+      <li>No menu, abra <b>Clientes</b>.</li>
+      <li>Carregue em <b>+ Novo cliente</b>. Abre a <b>Ficha do cliente</b>.</li>
+    </ol>
+    <p>Nesta página também pode:</p>
+    <ul>
+      <li>procurar um cliente pelo nome, morada ou contacto;</li>
+      <li>exportar a lista com <b>Exportar Excel</b> ou <b>Exportar PDF</b>.</li>
+    </ul>
+    <p class="tip"><b>Quem pode:</b> só gestores, owners e Super Admin criam e alteram clientes. O funcionário vê só os clientes onde trabalha.</p>
+  </div>
+  <figure class="screen" aria-label="Ecrã ilustrativo: lista de clientes">
+    <div class="bar"><i></i><i></i><i></i><span>OmniBiz · Clientes</span></div>
+    <div class="sc">
+      <div class="row">
+        <div><div class="t" style="font-family:var(--display);font-size:1.15rem">Clientes</div><div class="m small">Cadastre clientes e defina os funcionários responsáveis.</div></div>
+        <div class="btns"><span class="btn">Exportar Excel</span><span class="btn">Exportar PDF</span><span class="btn pri hl">+ Novo cliente</span></div>
+      </div>
+      <div class="inp m">Pesquisar cliente por nome, morada ou contacto...</div>
+      <div class="card">
+        <div class="row"><span class="t">Loja Central</span><span class="pill p-ok">ativo</span></div>
+        <div class="m small">📅 Semanalmente · Seg, Qua, Sex · 09:00–12:00<br>🕒 Carga contratada: 3h00<br>📍 Rua das Flores 25, Lisboa<br>☎ 912 345 678</div>
+        <div class="sec">Equipe</div>
+        <div class="btns"><span class="pill p-info">★ Ana Ribeiro · habitual</span><span class="pill p-mut">Bruno Costa · habitual</span><span class="pill p-warn">Diego Alves · recurso</span></div>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section class="step" aria-labelledby="c2">
+  <div class="step-text">
+    <h2 id="c2"><span class="num">2</span>Dados cadastrais e morada</h2>
+    <ul>
+      <li><b>Nome cliente</b>: o nome que aparece nas tarefas.</li>
+      <li><b>Status</b>: deixe <b>Ativo</b>. Um cliente <b>Inativo</b> continua guardado com o histórico.</li>
+      <li><b>Telefone</b> e <b>Email</b>.</li>
+      <li><b>Endereço do cliente</b>: ao sair do campo, o sistema procura a morada no mapa e preenche sozinho a localização do trabalho.</li>
+    </ul>
+    <p>O <b>Modo de apontamento</b> é <b>Start/Stop</b>: o funcionário marca o início e o fim do trabalho no ponto.</p>
+    <p class="tip"><b>Dica:</b> escreva a morada completa, com rua, número e cidade. Assim a localização fica certa.</p>
+  </div>
+  <figure class="screen" aria-label="Ecrã ilustrativo: dados cadastrais e morada">
+    <div class="bar"><i></i><i></i><i></i><span>Ficha do cliente · Registe um novo cliente e a sua equipa responsável.</span></div>
+    <div class="sc">
+      <div class="card">
+        <div class="grid2">
+          <div class="field"><label>NOME CLIENTE</label><div class="inp">Loja Central</div></div>
+          <div class="field"><label>STATUS</label><div class="inp">Ativo ▾</div></div>
+        </div>
+        <span class="sec">Dados cadastrais</span>
+        <div class="grid2">
+          <div class="field"><label>Telefone</label><div class="inp">912 345 678</div></div>
+          <div class="field"><label>Email</label><div class="inp">loja@exemplo.pt</div></div>
+        </div>
+        <span class="sec">Geolocalização</span>
+        <div class="field"><label>Endereço do cliente</label><div class="inp">Rua das Flores 25, 1200-195 Lisboa</div></div>
+        <div class="m small">A localização do trabalho é preenchida automaticamente a partir deste endereço.</div>
+        <div class="field"><label>Modo de apontamento</label><div class="inp" style="border-color:var(--accent);background:var(--accent-soft)"><b>Start/Stop</b><br><span class="small m">Funcionário marca início e fim</span></div></div>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section class="step" aria-labelledby="c3">
+  <div class="step-text">
+    <h2 id="c3"><span class="num">3</span>Horários &amp; programação</h2>
+    <p>Esta parte é a <b>sugestão</b> usada ao criar tarefas para o cliente. Ligue <b>Usar horário habitual</b> e preencha a <b>Programação 1</b>:</p>
+    <ul>
+      <li><b>Tipo de horário</b>: <b>Horário fixo</b> (início e fim obrigatórios) ou <b>Horário flexível</b> (horas opcionais).</li>
+      <li><b>Frequência</b>: de quanto em quanto tempo há serviço (ver a tabela abaixo).</li>
+      <li><b>Dias habituais</b>: os dias da semana do serviço.</li>
+      <li><b>Hora de início</b> e <b>Hora de fim</b>.</li>
+      <li><b>Carga da programação</b>: horas e minutos de trabalho previstos.</li>
+    </ul>
+    <p>Se o cliente tiver horários diferentes (ex.: segunda de manhã e sábado à tarde), use <b>+ Adicionar programação</b>. Pode dar um nome a cada uma, por exemplo "Semana A".</p>
+    <p class="tip"><b>Importante:</b> mesmo com o horário habitual, o gestor pode ajustar a data e a hora de cada tarefa.</p>
+  </div>
+  <figure class="screen" aria-label="Ecrã ilustrativo: horários e programação">
+    <div class="bar"><i></i><i></i><i></i><span>Ficha do cliente · Horários &amp; programação</span></div>
+    <div class="sc">
+      <div class="card">
+        <div class="row"><div><div class="t">Usar horário habitual</div><div class="m small">A tarefa receberá a próxima data e o horário configurado, sem impedir ajustes manuais.</div></div><span class="toggle" aria-hidden="true"></span></div>
+        <div class="card" style="background:var(--screen)">
+          <div class="row"><span class="t">Programação 1</span><span class="m small">🗑 Remover</span></div>
+          <div class="inp m">Nome opcional (ex.: Semana A)</div>
+          <div class="grid2">
+            <div class="field"><label>Tipo de horário</label><div class="inp">Horário fixo ▾</div></div>
+            <div class="field"><label>Frequência</label><div class="inp">Semanalmente (dias escolhidos) ▾</div></div>
+          </div>
+          <div class="field"><label>Dias habituais</label><div class="days"><span>Dom</span><span class="on">Seg</span><span>Ter</span><span class="on">Qua</span><span>Qui</span><span class="on">Sex</span><span>Sáb</span></div></div>
+          <div class="grid2">
+            <div class="field"><label>Hora de início</label><div class="inp">09:00</div></div>
+            <div class="field"><label>Hora de fim</label><div class="inp">12:00</div></div>
+            <div class="field"><label>Carga da programação · horas</label><div class="inp">3</div></div>
+            <div class="field"><label>Carga · minutos</label><div class="inp">00</div></div>
+          </div>
+        </div>
+        <div class="btns"><span class="btn">+ Adicionar programação</span></div>
+        <div class="field"><label>Observações do horário</label><div class="inp m">Ex.: na 1.ª semana do mês entrar às 8:00</div></div>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section aria-labelledby="fr" style="display:grid;gap:14px">
+  <h2 id="fr">Que frequência escolher</h2>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Frequência</th><th>Quando usar</th><th>O que preencher</th></tr></thead>
+      <tbody>
+        <tr><td>Diariamente</td><td>Serviço todos os dias escolhidos da semana</td><td>Dias e horário</td></tr>
+        <tr><td>Semanalmente (dias escolhidos)</td><td>Os mesmos dias todas as semanas</td><td>Dias habituais e horário</td></tr>
+        <tr><td>2x por semana / 3x por semana</td><td>Número fixo de visitas por semana</td><td>Exatamente 2 ou 3 dias</td></tr>
+        <tr><td>Quinzenal (semana sim, semana não)</td><td>De 2 em 2 semanas</td><td>Dias, <b>Semana de atendimento</b> e <b>Início do ciclo</b></td></tr>
+        <tr><td>Ciclo alternado (A/B)</td><td>Semanas diferentes que se repetem (ex.: semana A seg/qua, semana B sex)</td><td><b>Tamanho do ciclo</b>, <b>Posição no ciclo</b> e <b>Início do ciclo</b>; uma programação por semana do ciclo</td></tr>
+        <tr><td>Mensalmente (dia do mês)</td><td>Sempre no mesmo dia, ex.: dia 15</td><td><b>Dia do mês</b> e horário</td></tr>
+        <tr><td>Mensalmente (posição no mês)</td><td>Ex.: primeira segunda-feira ou última sexta</td><td><b>Posição</b> (Primeira a Quarta, ou Última) e <b>Dia da semana</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="m small">No quinzenal e no ciclo alternado, a primeira semana começa na data de <b>Início do ciclo</b>, e não no número da semana do calendário.</p>
+</section>
+
+<section class="step" aria-labelledby="c4">
+  <div class="step-text">
+    <h2 id="c4"><span class="num">4</span>Cobrança e instruções</h2>
+    <p>Em <b>Forma de cobrança</b>, escolha uma opção:</p>
+    <ul>
+      <li><b>Por hora</b>, <b>Por dia</b>, <b>Valor fixo por tarefa</b>, <b>Mensal</b>, ou <b>Misto (hora + fixo)</b>.</li>
+    </ul>
+    <p>Deixe o valor em branco para usar o valor geral da empresa ("Herda da empresa"). Preencha só quando este cliente tem um preço próprio.</p>
+    <p>Em <b>Instruções adicionais</b>, escreva o que a equipa precisa de saber no local: código do portão, onde ficam as chaves, cuidados especiais. As <b>Observações gerais</b> servem para notas internas.</p>
+  </div>
+  <figure class="screen" aria-label="Ecrã ilustrativo: cobrança e instruções">
+    <div class="bar"><i></i><i></i><i></i><span>Ficha do cliente · Cobrança</span></div>
+    <div class="sc">
+      <div class="card">
+        <span class="sec">Cobrança</span>
+        <div class="field"><label>Forma de cobrança</label><div class="inp">Por hora ▾</div></div>
+        <div class="field"><label>Valor / hora (€)</label><div class="inp m">Herda da empresa</div></div>
+        <div class="field"><label>OBSERVAÇÕES GERAIS</label><div class="inp">Cliente desde 2025. Faturar ao fim do mês.</div></div>
+        <div class="field"><label>INSTRUÇÕES ADICIONAIS</label><div class="inp">Código do portão 4521. Chaves na portaria. Não usar lixívia no chão de madeira.</div></div>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section class="step" aria-labelledby="c5">
+  <div class="step-text">
+    <h2 id="c5"><span class="num">5</span>Equipa responsável</h2>
+    <p>Marque os funcionários que atendem este cliente. Pode escrever parte do nome em <b>Pesquisar funcionário</b>. Para cada pessoa marcada, escolha:</p>
+    <ul>
+      <li><b>habitual</b>: faz parte da equipa fixa. Já aparece escolhido nas tarefas novas.</li>
+      <li><b>recurso</b>: substituto. Só entra numa tarefa quando o gestor o escolhe.</li>
+      <li><b>principal</b>: o responsável da equipa habitual. Aparece com ★ na lista de clientes.</li>
+    </ul>
+    <p>Por fim, carregue em <b>Criar cliente</b>. O cliente aparece logo na lista.</p>
+  </div>
+  <figure class="screen" aria-label="Ecrã ilustrativo: equipa responsável">
+    <div class="bar"><i></i><i></i><i></i><span>Ficha do cliente · Equipa responsável</span></div>
+    <div class="sc">
+      <div class="card">
+        <span class="sec">Equipa responsável</span>
+        <div class="m small">A equipa habitual é pré-selecionada nas novas tarefas. Recursos só entram na operação quando forem atribuídos explicitamente.</div>
+        <div class="field"><label>Pesquisar funcionário (opcional)</label><div class="inp m">Escreva parte do nome</div></div>
+        <div class="chk" style="flex-direction:column"><div style="display:flex;gap:8px"><span class="box on">✓</span>Ana Ribeiro</div><div style="display:flex;gap:12px;padding-left:23px"><span class="radio"><i class="on"></i>habitual</span><span class="radio"><i></i>recurso</span><span class="radio"><i class="on"></i>principal</span></div></div>
+        <div class="chk" style="flex-direction:column"><div style="display:flex;gap:8px"><span class="box on">✓</span>Bruno Costa</div><div style="display:flex;gap:12px;padding-left:23px"><span class="radio"><i class="on"></i>habitual</span><span class="radio"><i></i>recurso</span><span class="radio"><i></i>principal</span></div></div>
+        <div class="chk" style="flex-direction:column"><div style="display:flex;gap:8px"><span class="box on">✓</span>Diego Alves</div><div style="display:flex;gap:12px;padding-left:23px"><span class="radio"><i></i>habitual</span><span class="radio"><i class="on"></i>recurso</span></div></div>
+        <div class="chk"><span class="box"></span>Elisa Santos</div>
+        <div class="btns" style="justify-content:flex-end"><span class="btn">Cancelar</span><span class="btn pri hl">Criar cliente</span></div>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section class="step" aria-labelledby="c6">
+  <div class="step-text">
+    <h2 id="c6"><span class="num">6</span>Alterar, inativar ou excluir</h2>
+    <p>No cartão de cada cliente, na lista, há três botões:</p>
+    <ul>
+      <li><b>✎ Editar</b>: abre a ficha. Depois de alterar, carregue em <b>Salvar alterações</b>.</li>
+      <li><b>⏻ Inativar / Ativar</b>: o cliente deixa de estar ativo, mas mantém o histórico. É a opção recomendada quando o contrato acaba.</li>
+      <li><b>🗑 Remover</b>: apaga o cliente. O sistema pede confirmação. Também existe <b>Excluir cliente</b> dentro da ficha.</li>
+    </ul>
+    <p class="tip"><b>Recomendação:</b> prefira <b>Inativar</b> a remover. Assim não se perde o histórico de tarefas e de horas.</p>
+  </div>
+  <figure class="screen" aria-label="Ecrã ilustrativo: ações do cartão do cliente">
+    <div class="bar"><i></i><i></i><i></i><span>OmniBiz · Clientes</span></div>
+    <div class="sc">
+      <div class="card">
+        <div class="row"><span class="t">Loja Central <span class="pill p-ok">ativo</span></span>
+          <div class="btns"><span class="iconbtn hl" title="Editar">✎</span><span class="iconbtn" title="Inativar">⏻</span><span class="iconbtn" title="Remover">🗑</span></div></div>
+        <div class="m small">📅 Semanalmente · Seg, Qua, Sex · 09:00–12:00</div>
+      </div>
+      <div class="card">
+        <div class="row"><span class="t">Escritório Norte <span class="pill p-mut">inativo</span></span>
+          <div class="btns"><span class="iconbtn">✎</span><span class="iconbtn">⏻</span><span class="iconbtn">🗑</span></div></div>
+        <div class="m small">📅 Mensalmente · 1.ª segunda-feira · 14:00–18:00</div>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section aria-labelledby="er" style="display:grid;gap:14px">
+  <h2 id="er">Mensagens de erro mais comuns</h2>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Mensagem</th><th>Como resolver</th></tr></thead>
+      <tbody>
+        <tr><td>Adicione pelo menos uma programação habitual.</td><td>Com "Usar horário habitual" ligado, preencha pelo menos uma programação. Também pode desligar a opção.</td></tr>
+        <tr><td>Selecione pelo menos um dia na programação 1.</td><td>Marque os dias em "Dias habituais".</td></tr>
+        <tr><td>Selecione exatamente 2 (ou 3) dias na programação 1.</td><td>Em "2x por semana" e "3x por semana", o número de dias tem de bater certo.</td></tr>
+        <tr><td>Informe início e fim na programação 1, ou escolha horário flexível.</td><td>No horário fixo, as duas horas são obrigatórias.</td></tr>
+        <tr><td>Informe horários diferentes e válidos na programação 1.</td><td>A hora de início e a de fim não podem ser iguais.</td></tr>
+        <tr><td>Informe o início do ciclo na programação 1.</td><td>No quinzenal e no ciclo alternado, preencha "Início do ciclo".</td></tr>
+        <tr><td>A carga da programação 1 deve ser maior que zero.</td><td>Preencha as horas e os minutos de trabalho previstos.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="fq" class="faq">
+  <h2 id="fq">Perguntas frequentes</h2>
+  <div><h3>Mudei o horário do cliente. As tarefas que já existem mudam?</h3><p>Não. O horário da ficha é uma sugestão para as tarefas novas. As tarefas já criadas não mudam sozinhas.</p></div>
+  <div><h3>Um funcionário não aparece na equipa responsável.</h3><p>Só aparecem funcionários ativos da empresa. Confirme o cadastro dele na equipa.</p></div>
+  <div><h3>A localização ficou errada.</h3><p>Corrija o endereço com rua, número, código postal e cidade e saia do campo. O sistema volta a procurar.</p></div>
+  <div><h3>O cliente tem duas equipas em semanas diferentes.</h3><p>Use duas programações (ex.: "Semana A" e "Semana B") com o ciclo alternado.</p></div>
+</section>
+
+<p class="foot">Os ecrãs desta página são ilustrações com nomes e dados de exemplo. O aspeto no sistema pode variar um pouco consoante o tamanho do ecrã.</p>

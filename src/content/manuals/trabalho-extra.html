@@ -1,0 +1,207 @@
+<header class="intro">
+  <div class="eyebrow">OmniBiz · Guia para gestores</div>
+  <h1>Trabalho Extra</h1>
+  <p>Quando um cliente pede um serviço fora do horário normal, regista-o aqui. O sistema mostra quem da sua equipa de extras está livre nesses dias e horas. Escolhe as pessoas e envia o convite. Quem aceitar primeiro fica com a vaga, e as tarefas são criadas sozinhas.</p>
+  <div class="flow" aria-label="Resumo do fluxo">
+    <span>Escolher a equipa</span><span>Registar o trabalho</span><span>Ver disponíveis</span><span>Enviar convites</span><span>Acompanhar</span>
+  </div>
+</header>
+
+<section class="step" aria-labelledby="s1">
+  <div class="step-text">
+    <h2 id="s1"><span class="num">1</span>Escolher quem faz trabalho extra</h2>
+    <p>Só uma parte da equipa faz extras. Esta lista define quem pode receber convites. Faz-se uma vez e altera-se quando for preciso.</p>
+    <ol>
+      <li>No menu, abra <b>Trabalho Extra</b>.</li>
+      <li>Em <b>Funcionários que fazem trabalho extra</b>, carregue em <b>Editar lista</b>.</li>
+      <li>Marque as pessoas e carregue em <b>Guardar lista</b>.</li>
+    </ol>
+    <p class="tip"><b>Dica:</b> se a lista estiver vazia, ela abre sozinha. Sem ninguém marcado, o sistema não tem a quem enviar convites.</p>
+  </div>
+  <figure class="screen" aria-label="Ecrã ilustrativo: lista de funcionários elegíveis">
+    <div class="bar"><i></i><i></i><i></i><span>OmniBiz · Trabalho Extra</span></div>
+    <div class="sc">
+      <div class="card">
+        <div class="row"><span class="t">Funcionários que fazem trabalho extra <span class="m">(3)</span></span><span class="btn">Fechar</span></div>
+        <div class="grid3">
+          <div class="chk"><span class="box on">✓</span>Ana Ribeiro</div>
+          <div class="chk"><span class="box on">✓</span>Bruno Costa</div>
+          <div class="chk"><span class="box"></span>Carla Mendes</div>
+          <div class="chk"><span class="box on">✓</span>Diego Alves</div>
+          <div class="chk"><span class="box"></span>Elisa Santos</div>
+          <div class="chk"><span class="box"></span>Fábio Lima</div>
+        </div>
+        <div class="btns"><span class="btn pri">Guardar lista</span><span class="btn">Cancelar</span></div>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section class="step" aria-labelledby="s2">
+  <div class="step-text">
+    <h2 id="s2"><span class="num">2</span>Registar o trabalho extra</h2>
+    <p>No quadro <b>Novo trabalho extra</b>, preencha:</p>
+    <ul>
+      <li><b>Cliente</b>, ou um <b>Título</b> se não houver cliente.</li>
+      <li><b>Funcionários necessários</b>: quantas vagas há (de 1 a 50).</li>
+      <li><b>Instruções</b> (opcional): o que o funcionário precisa de saber.</li>
+      <li><b>Dias e horários</b>: uma linha por dia. Use <b>Adicionar dia</b> para mais dias.</li>
+    </ul>
+    <p class="tip"><b>Importante:</b> quem aceita fica com <b>todos</b> os dias do pacote. Se os dias forem para pessoas diferentes, crie um trabalho extra para cada dia.</p>
+    <p>Se a hora de fim for menor que a de início (ex.: 22:00 às 02:00), o sistema entende que acaba no dia seguinte.</p>
+  </div>
+  <figure class="screen" aria-label="Ecrã ilustrativo: formulário de novo trabalho extra">
+    <div class="bar"><i></i><i></i><i></i><span>OmniBiz · Trabalho Extra</span></div>
+    <div class="sc">
+      <div class="card">
+        <span class="t">+ Novo trabalho extra</span>
+        <div class="grid3">
+          <div class="field"><label>Cliente</label><div class="inp">Loja Central</div></div>
+          <div class="field"><label>Título (opcional)</label><div class="inp">Limpeza pós-obra</div></div>
+          <div class="field"><label>Funcionários necessários</label><div class="inp">2</div></div>
+        </div>
+        <div class="field"><label>Instruções (opcional)</label><div class="inp">Levar aspirador industrial. Entrada pela porta lateral.</div></div>
+        <div class="field"><label>Dias e horários (o funcionário aceita o pacote completo)</label></div>
+        <div class="grid3">
+          <div class="field"><label>Data</label><div class="inp">08/11/2026</div></div>
+          <div class="field"><label>Início</label><div class="inp">09:00</div></div>
+          <div class="field"><label>Fim</label><div class="inp">13:00</div></div>
+        </div>
+        <div class="grid3">
+          <div class="field"><label>Data</label><div class="inp">09/11/2026</div></div>
+          <div class="field"><label>Início</label><div class="inp">09:00</div></div>
+          <div class="field"><label>Fim</label><div class="inp">13:00</div></div>
+        </div>
+        <div class="btns"><span class="btn">+ Adicionar dia</span><span class="btn pri hl">Ver funcionários disponíveis</span></div>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section class="step" aria-labelledby="s3">
+  <div class="step-text">
+    <h2 id="s3"><span class="num">3</span>Ver quem está disponível e enviar</h2>
+    <p>Carregue em <b>Ver funcionários disponíveis</b>. O sistema divide a equipa de extras em dois grupos:</p>
+    <ul>
+      <li><span class="lbl-ok">Disponíveis</span>: livres em todos os dias e horas. Marque um a um ou use <b>Marcar todos</b>.</li>
+      <li><span class="lbl-mut">Ocupados</span>: não podem receber o convite. O motivo aparece por baixo do nome: tarefa no mesmo horário, tarefa sem hora de fim nesse dia, férias aprovadas ou ponto aberto.</li>
+    </ul>
+    <p>O sinal <span class="warnline">⚠ Menos de 11h de descanso</span> é só um aviso. A pessoa pode ser convidada, mas confirme se está tudo bem.</p>
+    <p>Depois carregue em <b>Criar e enviar convites</b>. Os escolhidos recebem o convite na hora.</p>
+  </div>
+  <figure class="screen" aria-label="Ecrã ilustrativo: funcionários disponíveis e ocupados">
+    <div class="bar"><i></i><i></i><i></i><span>OmniBiz · Trabalho Extra</span></div>
+    <div class="sc">
+      <div class="card">
+        <div class="row"><span class="lbl-ok">Disponíveis (2)</span><span class="chk" style="border:0;padding:0;background:none"><span class="box on">✓</span>Marcar todos</span></div>
+        <div class="grid2">
+          <div class="chk"><span class="box on">✓</span><span>Ana Ribeiro</span></div>
+          <div class="chk"><span class="box on">✓</span><span>Diego Alves<span class="small warnline" style="display:block">⚠ Menos de 11h de descanso · Turno noite 07/11 20:00–00:00</span></span></div>
+        </div>
+        <span class="lbl-mut">Ocupados (1)</span>
+        <div class="grid2">
+          <div class="busy">Bruno Costa<span class="small" style="display:block">Tarefa Escritório Norte · 08/11 10:00–12:00</span></div>
+        </div>
+        <div class="btns"><span class="btn pri">Criar e enviar convites (2)</span><span class="btn">Voltar</span></div>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section class="step" aria-labelledby="s4">
+  <div class="step-text">
+    <h2 id="s4"><span class="num">4</span>O que o funcionário vê</h2>
+    <p>Com o OmniBiz aberto, o convite aparece no ecrã em qualquer página, com três opções:</p>
+    <ul>
+      <li><b>Aceitar</b>: fica com a vaga, e as tarefas de todos os dias aparecem em <b>Minhas Tarefas</b>.</li>
+      <li><b>Recusar</b>: a gestora recebe o aviso da recusa.</li>
+      <li><b>Depois</b>: fecha a janela. O convite continua em <b>Trabalho Extra</b> e nas notificações.</li>
+    </ul>
+    <p>Quem chega depois de as vagas encherem recebe <b>Vagas preenchidas</b> e já não consegue aceitar.</p>
+  </div>
+  <figure class="screen" aria-label="Ecrã ilustrativo: convite que aparece ao funcionário">
+    <div class="bar"><i></i><i></i><i></i><span>OmniBiz · ecrã do funcionário</span></div>
+    <div class="modal-bg">
+      <div class="modal">
+        <div><div class="t" style="font-family:var(--display);font-size:1.05rem">Trabalho extra disponível</div><div class="m small">2 vagas · os primeiros a aceitar ficam com as vagas.</div></div>
+        <div class="t">Limpeza pós-obra</div>
+        <div class="m">08/11/2026 · 09:00–13:00<br>09/11/2026 · 09:00–13:00</div>
+        <div>Levar aspirador industrial. Entrada pela porta lateral.</div>
+        <div class="m small">Ao aceitar, fica com todos os dias.</div>
+        <div class="btns" style="justify-content:flex-end"><span class="btn" style="border-color:transparent">Depois</span><span class="btn">Recusar</span><span class="btn pri">Aceitar</span></div>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section class="step" aria-labelledby="s5">
+  <div class="step-text">
+    <h2 id="s5"><span class="num">5</span>Acompanhar o trabalho extra</h2>
+    <p>Em <b>Trabalhos extra</b>, cada cartão mostra:</p>
+    <ul>
+      <li>o estado (<span class="pill p-info">aberto</span>, <span class="pill p-ok">completo</span> ou <span class="pill p-mut">cancelado</span>) e as vagas preenchidas, ex.: <b>1/2 vagas</b>;</li>
+      <li>a resposta de cada convidado: <span class="pill p-warn">aguarda resposta</span> <span class="pill p-ok">aceite</span> <span class="pill p-bad">recusado</span>.</li>
+    </ul>
+    <p><b>Convidar mais</b> abre de novo a lista de disponíveis, sem as pessoas já convidadas.</p>
+    <p><b>Cancelar</b> só aparece enquanto ninguém aceitou. Os convidados recebem o aviso do cancelamento.</p>
+  </div>
+  <figure class="screen" aria-label="Ecrã ilustrativo: cartão de acompanhamento">
+    <div class="bar"><i></i><i></i><i></i><span>OmniBiz · Trabalho Extra</span></div>
+    <div class="sc">
+      <div class="card">
+        <div class="row" style="align-items:flex-start">
+          <div><div class="t">Limpeza pós-obra</div><div class="m">08/11/2026 · 09:00–13:00<br>09/11/2026 · 09:00–13:00</div></div>
+          <div style="display:grid;justify-items:end;gap:4px"><span class="pill p-info">aberto</span><span class="t">1/2 vagas</span></div>
+        </div>
+        <div class="btns"><span class="pill p-ok">Ana Ribeiro · aceite</span><span class="pill p-warn">Diego Alves · aguarda resposta</span><span class="pill p-bad">Elisa Santos · recusado</span></div>
+        <div class="btns"><span class="btn">Convidar mais</span></div>
+      </div>
+      <div class="card">
+        <div class="row" style="align-items:flex-start">
+          <div><div class="t">Evento sábado</div><div class="m">15/11/2026 · 18:00–23:00</div></div>
+          <div style="display:grid;justify-items:end;gap:4px"><span class="pill p-ok">completo</span><span class="t">1/1 vagas</span></div>
+        </div>
+        <div class="btns"><span class="pill p-ok">Bruno Costa · aceite</span><span class="pill p-mut">Ana Ribeiro · vagas preenchidas</span></div>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section aria-labelledby="av" style="display:grid;gap:14px">
+  <h2 id="av">Avisos que vai receber</h2>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Quando</th><th>Quem recebe</th><th>Aviso</th></tr></thead>
+      <tbody>
+        <tr><td>Envia o convite</td><td>Funcionários escolhidos</td><td>Trabalho extra disponível</td></tr>
+        <tr><td>Um funcionário aceita</td><td>Gestora que criou</td><td>Trabalho extra aceite</td></tr>
+        <tr><td>Um funcionário recusa</td><td>Gestora que criou</td><td>Trabalho extra recusado</td></tr>
+        <tr><td>As vagas enchem</td><td>Gestora e convidados que não responderam</td><td>Trabalho extra completo / Vagas preenchidas</td></tr>
+        <tr><td>A gestora cancela</td><td>Convidados</td><td>Trabalho extra cancelado</td></tr>
+        <tr><td>Uma tarefa de trabalho extra é excluída</td><td>Funcionário e gestora que criou</td><td>Trabalho extra excluído</td></tr>
+        <tr><td>Qualquer tarefa é excluída</td><td>Funcionário atribuído e quem criou a tarefa</td><td>Tarefa excluída (numa série, um só aviso com o número de ocorrências)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="m small">Quem exclui ou cancela não recebe aviso da própria ação.</p>
+</section>
+
+<section aria-labelledby="rg" style="display:grid;gap:14px">
+  <h2 id="rg">Regras a ter em conta</h2>
+  <div class="rules">
+    <div class="rule"><h3>Quem chega primeiro fica</h3><p>Os aceites são tratados um de cada vez. Nunca entram mais pessoas do que as vagas.</p></div>
+    <div class="rule"><h3>Pacote completo</h3><p>Aceitar vale para todos os dias do trabalho extra. Não dá para aceitar só um dia.</p></div>
+    <div class="rule"><h3>Sem datas passadas</h3><p>Só se pode criar trabalho extra para datas e horas que ainda não passaram.</p></div>
+    <div class="rule"><h3>Tarefas criadas sozinhas</h3><p>Cada dia aceite vira uma tarefa no nome do funcionário, com o cliente e o horário do trabalho extra.</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="fq" class="faq">
+  <h2 id="fq">Perguntas frequentes</h2>
+  <div><h3>Apareceu "Nenhum funcionário elegível". O que faço?</h3><p>A lista do passo 1 está vazia, ou ninguém dessa lista ainda está ativo. Abra <b>Editar lista</b> e marque as pessoas.</p></div>
+  <div><h3>Um funcionário não aparece em lado nenhum.</h3><p>Confirme que é funcionário ativo da empresa e que está marcado na lista do passo 1.</p></div>
+  <div><h3>Preciso de mais gente depois de enviar.</h3><p>No cartão do trabalho extra, use <b>Convidar mais</b>.</p></div>
+  <div><h3>Não vejo o menu Trabalho Extra.</h3><p>O módulo tem de estar ligado na empresa. Fale com o suporte do OmniBiz.</p></div>
+</section>
+
+<p class="foot">Os ecrãs desta página são ilustrações com nomes e dados de exemplo. O aspeto no sistema pode variar um pouco consoante o tamanho do ecrã.</p>
