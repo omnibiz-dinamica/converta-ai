@@ -22,7 +22,13 @@ import { PricingSection } from "@/components/sections/PricingSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { SolutionDemoSection } from "@/components/sections/SolutionDemoSection";
 import { UseCasesSection } from "@/components/sections/UseCasesSection";
-import { MANUAL_CLIENTES_PATH, MANUAL_EXTRA_PATH, SUITE_PATH } from "@/lib/pages";
+import {
+  MANUAL_CLIENTES_PATH,
+  MANUAL_ENTRADA_PATH,
+  MANUAL_EXTRA_PATH,
+  SUITE_PATH,
+} from "@/lib/pages";
+import { ManualEntradaPage } from "@/pages/ManualEntradaPage";
 import { ManualClientesPage } from "@/pages/ManualClientesPage";
 import { ManualTrabalhoExtraPage } from "@/pages/ManualTrabalhoExtraPage";
 import { OmniBizSuitePage } from "@/pages/OmniBizSuitePage";
@@ -48,6 +54,7 @@ export function StaticApp() {
   if (path === SUITE_PATH) return <OmniBizSuitePage />;
   if (path === MANUAL_EXTRA_PATH) return <ManualTrabalhoExtraPage />;
   if (path === MANUAL_CLIENTES_PATH) return <ManualClientesPage />;
+  if (path === MANUAL_ENTRADA_PATH) return <ManualEntradaPage />;
 
   return <HomePage />;
 }

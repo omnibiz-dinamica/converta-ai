@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { MANUAL_GROUPS } from "@/lib/manuals";
 import { SUITE_PATH } from "@/lib/pages";
 import { Logo } from "./Logo";
 
@@ -23,6 +24,76 @@ type NavbarProps = {
   /** Destaca o menu "Sistema" quando a página atual pertence a ele. */
   activeSystem?: boolean;
 };
+
+function Chevron({ open }: { open: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden
+      className={`h-3.5 w-3.5 shrink-0 transition-smooth ${open ? "rotate-90" : ""}`}
+    >
+      <path
+        d="M9 6l6 6-6 6"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+/** "Tutoriais OmniBiz" → pastas (Clientes, Trabalho Extra…) → manuais. */
+function TutorialTree({ onNavigate }: { onNavigate: () => void }) {
+  const [open, setOpen] = useState(false);
+  const [group, setGroup] = useState<string | null>(null);
+  const row =
+    "flex w-full items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-left text-sm font-semibold text-foreground transition-smooth hover:bg-secondary";
+
+  return (
+    <div>
+      <button type="button" aria-expanded={open} onClick={() => setOpen((v) => !v)} className={row}>
+        Tutoriais OmniBiz
+        <Chevron open={open} />
+      </button>
+      {open && (
+        <div className="ml-4 border-l border-border pl-2">
+          {MANUAL_GROUPS.map((g) => {
+            const isOpen = group === g.label;
+            return (
+              <div key={g.label}>
+                <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  onClick={() => setGroup(isOpen ? null : g.label)}
+                  className={row.replace("text-foreground", "text-foreground/90")}
+                >
+                  {g.label}
+                  <Chevron open={isOpen} />
+                </button>
+                {isOpen && (
+                  <div className="ml-4 border-l border-border pl-2">
+                    {g.items.map((m) => (
+                      <a
+                        key={m.href}
+                        href={m.href}
+                        onClick={onNavigate}
+                        className="block rounded-xl px-3 py-2 text-sm text-muted-foreground transition-smooth hover:bg-secondary hover:text-foreground"
+                      >
+                        {m.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
 
 function SystemMenu({ active }: { active: boolean }) {
   const [open, setOpen] = useState(false);
@@ -78,7 +149,7 @@ function SystemMenu({ active }: { active: boolean }) {
       </button>
 
       {open && (
-        <div className="absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 pt-3">
+        <div className="absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3">
           <div className="rounded-2xl border border-border bg-card p-2 shadow-elegant">
             <a
               href={`${SUITE_PATH}#manuais`}
@@ -88,6 +159,7 @@ function SystemMenu({ active }: { active: boolean }) {
             >
               <span className="block text-sm font-semibold text-foreground">OmniBiz Suite</span>
             </a>
+            <TutorialTree onNavigate={() => setOpen(false)} />
           </div>
         </div>
       )}
@@ -209,6 +281,9 @@ export function Navbar({ home = true, activeSystem = false }: NavbarProps) {
               >
                 OmniBiz Suite
               </a>
+              <div className="mt-1">
+                <TutorialTree onNavigate={() => setOpen(false)} />
+              </div>
             </div>
 
             {links.slice(SYSTEM_MENU_AFTER).map((l) => (

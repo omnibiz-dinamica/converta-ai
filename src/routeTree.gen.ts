@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SistemaOmnibizSuiteRouteImport } from './routes/sistema.omnibiz-suite'
 import { Route as SistemaOmnibizSuiteManuaisTrabalhoExtraRouteImport } from './routes/sistema.omnibiz-suite_.manuais.trabalho-extra'
+import { Route as SistemaOmnibizSuiteManuaisEntradaPorPessoasRouteImport } from './routes/sistema.omnibiz-suite_.manuais.entrada-por-pessoas'
 import { Route as SistemaOmnibizSuiteManuaisCadastroDeClientesRouteImport } from './routes/sistema.omnibiz-suite_.manuais.cadastro-de-clientes'
 
 const IndexRoute = IndexRouteImport.update({
@@ -30,6 +31,12 @@ const SistemaOmnibizSuiteManuaisTrabalhoExtraRoute =
     path: '/sistema/omnibiz-suite/manuais/trabalho-extra',
     getParentRoute: () => rootRouteImport,
   } as any)
+const SistemaOmnibizSuiteManuaisEntradaPorPessoasRoute =
+  SistemaOmnibizSuiteManuaisEntradaPorPessoasRouteImport.update({
+    id: '/sistema/omnibiz-suite_/manuais/entrada-por-pessoas',
+    path: '/sistema/omnibiz-suite/manuais/entrada-por-pessoas',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const SistemaOmnibizSuiteManuaisCadastroDeClientesRoute =
   SistemaOmnibizSuiteManuaisCadastroDeClientesRouteImport.update({
     id: '/sistema/omnibiz-suite_/manuais/cadastro-de-clientes',
@@ -41,12 +48,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/sistema/omnibiz-suite': typeof SistemaOmnibizSuiteRoute
   '/sistema/omnibiz-suite/manuais/cadastro-de-clientes': typeof SistemaOmnibizSuiteManuaisCadastroDeClientesRoute
+  '/sistema/omnibiz-suite/manuais/entrada-por-pessoas': typeof SistemaOmnibizSuiteManuaisEntradaPorPessoasRoute
   '/sistema/omnibiz-suite/manuais/trabalho-extra': typeof SistemaOmnibizSuiteManuaisTrabalhoExtraRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/sistema/omnibiz-suite': typeof SistemaOmnibizSuiteRoute
   '/sistema/omnibiz-suite/manuais/cadastro-de-clientes': typeof SistemaOmnibizSuiteManuaisCadastroDeClientesRoute
+  '/sistema/omnibiz-suite/manuais/entrada-por-pessoas': typeof SistemaOmnibizSuiteManuaisEntradaPorPessoasRoute
   '/sistema/omnibiz-suite/manuais/trabalho-extra': typeof SistemaOmnibizSuiteManuaisTrabalhoExtraRoute
 }
 export interface FileRoutesById {
@@ -54,6 +63,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/sistema/omnibiz-suite': typeof SistemaOmnibizSuiteRoute
   '/sistema/omnibiz-suite_/manuais/cadastro-de-clientes': typeof SistemaOmnibizSuiteManuaisCadastroDeClientesRoute
+  '/sistema/omnibiz-suite_/manuais/entrada-por-pessoas': typeof SistemaOmnibizSuiteManuaisEntradaPorPessoasRoute
   '/sistema/omnibiz-suite_/manuais/trabalho-extra': typeof SistemaOmnibizSuiteManuaisTrabalhoExtraRoute
 }
 export interface FileRouteTypes {
@@ -62,18 +72,21 @@ export interface FileRouteTypes {
     | '/'
     | '/sistema/omnibiz-suite'
     | '/sistema/omnibiz-suite/manuais/cadastro-de-clientes'
+    | '/sistema/omnibiz-suite/manuais/entrada-por-pessoas'
     | '/sistema/omnibiz-suite/manuais/trabalho-extra'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/sistema/omnibiz-suite'
     | '/sistema/omnibiz-suite/manuais/cadastro-de-clientes'
+    | '/sistema/omnibiz-suite/manuais/entrada-por-pessoas'
     | '/sistema/omnibiz-suite/manuais/trabalho-extra'
   id:
     | '__root__'
     | '/'
     | '/sistema/omnibiz-suite'
     | '/sistema/omnibiz-suite_/manuais/cadastro-de-clientes'
+    | '/sistema/omnibiz-suite_/manuais/entrada-por-pessoas'
     | '/sistema/omnibiz-suite_/manuais/trabalho-extra'
   fileRoutesById: FileRoutesById
 }
@@ -81,6 +94,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SistemaOmnibizSuiteRoute: typeof SistemaOmnibizSuiteRoute
   SistemaOmnibizSuiteManuaisCadastroDeClientesRoute: typeof SistemaOmnibizSuiteManuaisCadastroDeClientesRoute
+  SistemaOmnibizSuiteManuaisEntradaPorPessoasRoute: typeof SistemaOmnibizSuiteManuaisEntradaPorPessoasRoute
   SistemaOmnibizSuiteManuaisTrabalhoExtraRoute: typeof SistemaOmnibizSuiteManuaisTrabalhoExtraRoute
 }
 
@@ -107,6 +121,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SistemaOmnibizSuiteManuaisTrabalhoExtraRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sistema/omnibiz-suite_/manuais/entrada-por-pessoas': {
+      id: '/sistema/omnibiz-suite_/manuais/entrada-por-pessoas'
+      path: '/sistema/omnibiz-suite/manuais/entrada-por-pessoas'
+      fullPath: '/sistema/omnibiz-suite/manuais/entrada-por-pessoas'
+      preLoaderRoute: typeof SistemaOmnibizSuiteManuaisEntradaPorPessoasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sistema/omnibiz-suite_/manuais/cadastro-de-clientes': {
       id: '/sistema/omnibiz-suite_/manuais/cadastro-de-clientes'
       path: '/sistema/omnibiz-suite/manuais/cadastro-de-clientes'
@@ -122,6 +143,8 @@ const rootRouteChildren: RootRouteChildren = {
   SistemaOmnibizSuiteRoute: SistemaOmnibizSuiteRoute,
   SistemaOmnibizSuiteManuaisCadastroDeClientesRoute:
     SistemaOmnibizSuiteManuaisCadastroDeClientesRoute,
+  SistemaOmnibizSuiteManuaisEntradaPorPessoasRoute:
+    SistemaOmnibizSuiteManuaisEntradaPorPessoasRoute,
   SistemaOmnibizSuiteManuaisTrabalhoExtraRoute:
     SistemaOmnibizSuiteManuaisTrabalhoExtraRoute,
 }

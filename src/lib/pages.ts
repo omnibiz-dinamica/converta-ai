@@ -5,6 +5,8 @@ export const SUITE_PATH = "/sistema/omnibiz-suite";
 export const MANUAL_EXTRA_PATH = `${SUITE_PATH}/manuais/trabalho-extra`;
 export const MANUAL_CLIENTES_PATH = `${SUITE_PATH}/manuais/cadastro-de-clientes`;
 
+export const MANUAL_ENTRADA_PATH = `${SUITE_PATH}/manuais/entrada-por-pessoas`;
+
 export type PageMeta = {
   path: string;
   title: string;
@@ -30,6 +32,13 @@ export const MANUAL_CLIENTES_META: PageMeta = {
   title: `Manual Cadastro de Clientes | OmniBiz Suite | ${BRAND_NAME}`,
   description:
     "Passo a passo para gestores: preencher a ficha do cliente com contactos, morada, horários, cobrança e equipa responsável no OmniBiz Suite.",
+};
+
+export const MANUAL_ENTRADA_META: PageMeta = {
+  path: MANUAL_ENTRADA_PATH,
+  title: `Manual Entrada por Nº de Pessoas | OmniBiz Suite | ${BRAND_NAME}`,
+  description:
+    "Passo a passo para gestores: configurar no cliente um horário de entrada diferente conforme o número de pessoas que vão ao serviço, sem alterar a carga horária.",
 };
 
 export const suiteJsonLd = {

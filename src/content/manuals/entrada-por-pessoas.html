@@ -1,0 +1,342 @@
+<header class="intro">
+  <div class="eyebrow">OmniBiz · Guia para gestores · Atualização</div>
+  <h1>Entrada conforme o número de pessoas</h1>
+  <p>
+    Alguns clientes têm um horário quando vão 2 pessoas e outro quando vai só 1, e pagam sempre as
+    mesmas horas. Agora a programação do cliente guarda esse horário alternativo. O sistema ajusta a
+    hora de entrada sozinho, e a carga do serviço não muda.
+  </p>
+  <div class="flow" aria-label="Partes do guia">
+    <span>1. Configurar no cliente</span><span>2. Criar a tarefa</span
+    ><span>3. Dia com menos pessoas</span>
+  </div>
+</header>
+
+<section aria-labelledby="ex" class="rules">
+  <h2 id="ex" style="grid-column: 1/-1">Exemplo usado neste guia</h2>
+  <div class="rule">
+    <h3>Normal: 2 pessoas</h3>
+    <p>Entram às <b>08:30</b> e saem às <b>10:00</b>: 1h30 cada uma, 3h no total.</p>
+  </div>
+  <div class="rule">
+    <h3>Às vezes: 1 pessoa</h3>
+    <p>Entra às <b>07:30</b> e sai às <b>10:30</b>: 3h, sozinha.</p>
+  </div>
+  <div class="rule">
+    <h3>O cliente paga</h3>
+    <p>Sempre <b>3h</b>. A carga é o total do serviço e divide-se por quem vai.</p>
+  </div>
+</section>
+
+<section class="step" aria-labelledby="s1">
+  <div class="step-text">
+    <h2 id="s1"><span class="num">1</span>Configurar no cadastro do cliente</h2>
+    <ol>
+      <li>No menu, abra <b>Clientes</b> e edite o cliente.</li>
+      <li>
+        Em <b>Horários &amp; programação</b>, confirme a programação normal: início <b>08:30</b>,
+        fim <b>10:00</b> e carga de <b>3</b> horas e <b>00</b> minutos.
+      </li>
+      <li>
+        Por baixo da carga, na secção <b>Entrada conforme o nº de pessoas</b>, carregue em
+        <b>+ Adicionar entrada por nº de pessoas</b>.
+      </li>
+      <li>Preencha <b>Nº de pessoas = 1</b> e <b>Hora de entrada = 07:30</b>.</li>
+      <li>Guarde o cliente.</li>
+    </ol>
+    <p>
+      Só se indica a <b>hora de entrada</b>. A hora de saída é calculada: entrada mais a parte da
+      carga de cada pessoa (07:30 + 3h = 10:30).
+    </p>
+    <p class="tip">
+      <b>Dica:</b> não crie uma segunda programação "1 pessoa" nos mesmos dias. Isso gerava tarefas
+      a dobrar. Use sempre esta secção dentro da programação normal.
+    </p>
+  </div>
+  <figure
+    class="screen"
+    aria-label="Ecrã ilustrativo: programação do cliente com entrada para 1 pessoa"
+  >
+    <div class="bar">
+      <i></i><i></i><i></i><span>Ficha do cliente · Horários &amp; programação</span>
+    </div>
+    <div class="sc">
+      <div class="card">
+        <div class="row">
+          <span class="t">Programação 1 · Geral</span><span class="pill p-mut">Semanal</span>
+        </div>
+        <div class="days">
+          <span>D</span><span class="on">S</span><span>T</span><span class="on">Q</span
+          ><span>Q</span><span class="on">S</span><span>S</span>
+        </div>
+        <div class="grid2">
+          <div class="field">
+            <label>Hora de início</label>
+            <div class="inp">08:30</div>
+          </div>
+          <div class="field">
+            <label>Hora de fim</label>
+            <div class="inp">10:00</div>
+          </div>
+          <div class="field">
+            <label>Carga da programação · horas</label>
+            <div class="inp">3</div>
+          </div>
+          <div class="field">
+            <label>Carga · minutos</label>
+            <div class="inp">00</div>
+          </div>
+        </div>
+        <div class="card hl" style="border-style: dashed">
+          <div>
+            <div class="t">
+              Entrada conforme o nº de pessoas <span class="m small">(opcional)</span>
+            </div>
+            <div class="m small">
+              Ex.: 2 pessoas entram às 08:30; se for só 1 pessoa, entra às 07:30. A carga é a mesma
+              e o fim é calculado pela parte de cada um.
+            </div>
+          </div>
+          <div class="row" style="justify-content: flex-start; align-items: flex-end">
+            <div class="field" style="width: 7rem">
+              <label>Nº de pessoas</label>
+              <div class="inp">1</div>
+            </div>
+            <div class="field" style="flex: 1; min-width: 7rem">
+              <label>Hora de entrada</label>
+              <div class="inp">07:30</div>
+            </div>
+            <span class="iconbtn" aria-hidden="true">✕</span>
+          </div>
+          <div class="btns"><span class="btn">+ Adicionar entrada por nº de pessoas</span></div>
+        </div>
+      </div>
+      <div class="m small">
+        No cartão do cliente aparece: … · Carga: 3h · <b>1 pessoa: entrada 07:30</b>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section class="step" aria-labelledby="s2">
+  <div class="step-text">
+    <h2 id="s2"><span class="num">2</span>Criar a tarefa</h2>
+    <ol>
+      <li>Em <b>Tarefas</b>, carregue em <b>+ Nova tarefa</b> e escolha o cliente.</li>
+      <li>Em <b>Programação do cliente</b>, escolha a programação (ex.: <b>Geral</b>).</li>
+      <li>
+        Selecione os funcionários. O horário acompanha o número de pessoas:
+        <ul>
+          <li><b>2 pessoas</b>: 08:30–10:00, 1h30 cada;</li>
+          <li>
+            <b>1 pessoa</b>: 07:30–10:30, 3h. Aparece o aviso
+            <i>"Entrada ajustada para 1 pessoa"</i>.
+          </li>
+        </ul>
+      </li>
+      <li>
+        Confira e grave. Também funciona com recorrência: uma série criada com 1 pessoa fica sempre
+        às 07:30.
+      </li>
+    </ol>
+    <p class="tip">
+      <b>Atenção:</b> se escrever a hora de início ou de fim à mão, o sistema respeita o que
+      escreveu e deixa de ajustar. Para voltar ao automático, escolha outra vez a programação.
+    </p>
+  </div>
+  <figure class="screen" aria-label="Ecrã ilustrativo: nova tarefa com 1 pessoa">
+    <div class="bar"><i></i><i></i><i></i><span>Nova tarefa</span></div>
+    <div class="sc">
+      <div class="field">
+        <label>Programação do cliente</label>
+        <div class="inp">Geral</div>
+      </div>
+      <div class="field">
+        <label>Responsáveis</label>
+        <div class="btns">
+          <span class="pill p-info">Ana Ribeiro</span
+          ><span class="pill p-mut" style="text-decoration: line-through">Bruno Costa</span>
+        </div>
+      </div>
+      <div class="card" style="background: var(--chip)">
+        <div class="t small">Configuração do cliente</div>
+        <div class="m small">
+          Geral • Seg, Qua, Sex • 08:30–10:00 • horário fixo • 3h • 1 pessoa: entrada 07:30
+        </div>
+        <div class="m small">Carga total contratada: <b>3h</b></div>
+        <div class="m small">1 funcionário selecionado(s) → <b>3h por funcionário</b></div>
+        <div class="small hl" style="color: var(--accent); border-radius: 6px; padding: 2px 4px">
+          Entrada ajustada para 1 pessoa: 07:30–10:30 (a carga do serviço não muda).
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="field">
+          <label>Hora início</label>
+          <div class="inp">07:30</div>
+        </div>
+        <div class="field">
+          <label>Hora fim</label>
+          <div class="inp">10:30</div>
+        </div>
+      </div>
+      <div class="btns" style="justify-content: flex-end">
+        <span class="btn">Cancelar</span><span class="btn pri">Criar tarefa</span>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section class="step" aria-labelledby="s3">
+  <div class="step-text">
+    <h2 id="s3"><span class="num">3</span>Dia em que só vai 1 pessoa</h2>
+    <p>A série normal é de 2 pessoas, mas num dia só vai uma.</p>
+    <ol>
+      <li>
+        Abra a tarefa desse dia da pessoa que <b>não vai</b> e carregue em <b>Excluir</b>. Só essa
+        ocorrência é excluída.
+      </li>
+      <li>
+        O sistema passa a tarefa de quem fica para <b>07:30–10:30</b> (3h) e mostra:
+        <i>"Horas recalculadas para o funcionário que ficou: 3h, com entrada às 07:30."</i>
+      </li>
+    </ol>
+    <ul>
+      <li>Só muda <b>esse dia</b>. A série e os outros dias continuam às 08:30.</li>
+      <li>
+        Só acontece se a tarefa de quem fica ainda estiver <b>pendente</b> ou <b>autorizada</b>. Se
+        já começou, nada muda.
+      </li>
+      <li>Quem foi excluído recebe o aviso de tarefa excluída, como já acontecia.</li>
+    </ul>
+    <p class="tip">
+      <b>Importante:</b> use <b>Excluir</b>. Marcar ausência ou cancelar não recalcula o horário de
+      quem fica.
+    </p>
+  </div>
+  <figure class="screen" aria-label="Ecrã ilustrativo: antes e depois de excluir um colega">
+    <div class="bar"><i></i><i></i><i></i><span>Tarefas · Quarta-feira</span></div>
+    <div class="sc">
+      <div class="sec">Antes</div>
+      <div class="card">
+        <div class="row">
+          <span class="t">08:30 [Geral] Loja Central</span><span class="pill p-info">pendente</span>
+        </div>
+        <div class="m small">Ana Ribeiro · 08:30–10:00 (1h30)</div>
+      </div>
+      <div class="card hl">
+        <div class="row">
+          <span class="t">08:30 [Geral] Loja Central</span><span class="pill p-info">pendente</span>
+        </div>
+        <div class="m small">
+          Bruno Costa · 08:30–10:00 (1h30)
+          <span class="btn danger" style="padding: 1px 7px; margin-left: 6px">Excluir</span>
+        </div>
+      </div>
+      <div class="sec">Depois</div>
+      <div class="card">
+        <div class="row">
+          <span class="t">07:30 [Geral] Loja Central</span><span class="pill p-info">pendente</span>
+        </div>
+        <div class="m small">Ana Ribeiro · <b>07:30–10:30 (3h)</b></div>
+      </div>
+      <div class="busy small">
+        ✓ Horas recalculadas para o funcionário que ficou: 3h, com entrada às 07:30.
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section aria-labelledby="nm" class="rules">
+  <h2 id="nm" style="grid-column: 1/-1">O que não muda</h2>
+  <div class="rule">
+    <h3>Folha de ponto e pagamento</h3>
+    <p>
+      Continuam a usar as horas reais do ponto (entrada e saída batidas), e não o horário previsto
+      da tarefa.
+    </p>
+  </div>
+  <div class="rule">
+    <h3>Carga do cliente</h3>
+    <p>
+      O total do serviço é sempre o mesmo e divide-se por quem vai: 3h a dividir por 2 dá 1h30 cada;
+      por 1, dá 3h.
+    </p>
+  </div>
+  <div class="rule">
+    <h3>Clientes sem esta configuração</h3>
+    <p>Funcionam exatamente como antes.</p>
+  </div>
+  <div class="rule">
+    <h3>Tarefas já criadas</h3>
+    <p>Não mudam sozinhas. Só a exclusão de um colega (passo 3) ajusta a entrada do dia.</p>
+  </div>
+</section>
+
+<section aria-labelledby="er">
+  <h2 id="er" style="margin-bottom: 12px">Mensagens ao guardar o cliente</h2>
+  <div class="tbl">
+    <table>
+      <thead>
+        <tr>
+          <th>Mensagem</th>
+          <th>O que fazer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Informe a hora de entrada para 1 pessoa(s) na programação 1.</td>
+          <td>Preencha a hora de entrada da linha, ou remova a linha com ✕.</td>
+        </tr>
+        <tr>
+          <td>Informe um número de pessoas válido (1 a 50) na programação 1.</td>
+          <td>Escreva um número inteiro de pessoas.</td>
+        </tr>
+        <tr>
+          <td>O número de pessoas 1 está repetido na programação 1.</td>
+          <td>Cada número de pessoas só pode aparecer uma vez por programação.</td>
+        </tr>
+        <tr>
+          <td>Defina a carga da programação 1 para usar a entrada conforme o número de pessoas.</td>
+          <td>Preencha a carga (horas e minutos). É ela que calcula a hora de saída.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="fq" class="faq">
+  <h2 id="fq">Perguntas frequentes</h2>
+  <div>
+    <h3>Posso pôr também uma entrada para 3 pessoas?</h3>
+    <p>
+      Sim. Acrescente outra linha (ex.: 3 pessoas → 09:00). Para o número de pessoas que não tem
+      linha, usa-se o horário normal da programação.
+    </p>
+  </div>
+  <div>
+    <h3>Editei uma tarefa que já existia e o horário não mudou.</h3>
+    <p>
+      É de propósito: o ajuste automático só acontece em tarefas novas e na exclusão de um colega
+      (passo 3). Numa tarefa existente, altere a hora à mão.
+    </p>
+  </div>
+  <div>
+    <h3>Quando devo fazer o passo 3?</h3>
+    <p>
+      Assim que souber que só vai 1 pessoa, de preferência antes do dia. A tarefa de quem fica tem
+      de estar ainda pendente ou autorizada.
+    </p>
+  </div>
+  <div>
+    <h3>A tarefa de quem ficou não passou para as 07:30.</h3>
+    <p>
+      Confirme que a programação do cliente tem a linha "1 pessoa → 07:30", que a tarefa ainda não
+      começou e que a soma das horas da dupla era igual à carga do cliente (ex.: 1h30 + 1h30 = 3h).
+    </p>
+  </div>
+</section>
+
+<p class="foot">
+  Os ecrãs desta página são ilustrações com nomes e dados de exemplo. O aspeto no sistema pode
+  variar um pouco consoante o tamanho do ecrã.
+</p>

@@ -1,6 +1,12 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { wa } from "@/lib/contact";
-import { MANUAL_CLIENTES_PATH, MANUAL_EXTRA_PATH, SUITE_META, suiteJsonLd } from "@/lib/pages";
+import {
+  MANUAL_CLIENTES_PATH,
+  MANUAL_ENTRADA_PATH,
+  MANUAL_EXTRA_PATH,
+  SUITE_META,
+  suiteJsonLd,
+} from "@/lib/pages";
 import { usePageMeta } from "@/lib/pageMeta";
 
 const SUITE_JSON_LD = [suiteJsonLd];
@@ -95,6 +101,12 @@ const manuals = [
     desc: "Como preencher a ficha do cliente: contactos, morada, horários, cobrança e equipa responsável.",
     meta: "6 passos · Para gestores",
     href: MANUAL_CLIENTES_PATH,
+  },
+  {
+    title: "Entrada por nº de pessoas",
+    desc: "Como definir um horário de entrada diferente quando vão menos pessoas ao serviço, sem mudar as horas pagas.",
+    meta: "3 passos · Para gestores",
+    href: MANUAL_ENTRADA_PATH,
   },
 ];
 
@@ -387,7 +399,7 @@ export function OmniBizSuitePage() {
             </p>
           </div>
 
-          <div className="mt-14 grid gap-5 sm:grid-cols-2">
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {manuals.map((m) => (
               <a
                 key={m.href}
